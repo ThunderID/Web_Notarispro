@@ -1,0 +1,21 @@
+#webnotarispro
+webnotarispro_nginx:
+    build: ./nginx
+    ports:
+        - 8500:80
+    links:
+        - webnotarispro_php
+    volumes_from:
+        - webnotarispro
+webnotarispro_php:
+    build: ./php/
+    expose:
+        - 9000
+    volumes_from:
+        - webnotarispro
+#    command: sh /var/www/html/composer.sh
+webnotarispro:
+    image: php:7.0-fpm
+    volumes:
+        - ./apps:/var/www/html
+    command: "true"
