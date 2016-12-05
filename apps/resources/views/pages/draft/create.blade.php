@@ -7,7 +7,7 @@
 @section('title')
 	<h4>
 		@if(Request::route()->getName()=='edit.draft.akta')
-			<small><a class="btn btn-primary btn-sm" href="{{route('show.draft.akta', ['id' => env('sandbox_id')])}}"><</a></small>
+			<small><a class="btn btn-primary btn-sm" href="{{route('show.draft.akta', ['id' => $data['fragment']['id']])}}"><</a></small>
 		@else
 			<small><a class="btn btn-primary btn-sm" href="{{route('index.draft.akta')}}"><</a></small>
 		@endif
@@ -17,8 +17,8 @@
 
 @section('action')
 	@if(Request::route()->getName()=='edit.draft.akta')
-		<a class="btn btn-primary" href="{{route('issue.draft.akta', ['id' => env('sandbox_id')])}}" role="button">Issue</a>
-		<a class="btn btn-primary" href="{{route('update.draft.akta', ['id' => env('sandbox_id')])}}" role="button">Simpan</a>
+		<a class="btn btn-primary" href="{{route('issue.draft.akta', ['id' => $data['fragment']['id']])}}" role="button">Issue</a>
+		<a class="btn btn-primary" href="{{route('update.draft.akta', ['id' => $data['fragment']['id']])}}" role="button">Simpan</a>
 	@else
 		<a class="btn btn-primary" href="{{route('store.draft.akta')}}" role="button">Simpan</a>
 	@endif
