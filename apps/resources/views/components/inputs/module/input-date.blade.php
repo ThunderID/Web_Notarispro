@@ -1,5 +1,10 @@
 <?php
 	// init component
+	
+	//visibility
+	if(isset($data['visible']) && $data['visible'] == false){
+		return false;
+	}
 
 	// UI
 	$ui_label 		= isset($style['label']) ? $style['label'] : str_replace("_", " ", $data['name']);

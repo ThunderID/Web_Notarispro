@@ -4,17 +4,18 @@
 	active
 @endsection
 
-@section('title')
-	<h4>
-		<small><a class="btn btn-primary btn-sm" href="{{route('index.template.akta')}}"><</a></small>
-		Template Akta
-	</h4>
-@endsection
+@push('title')
+	<a class="btn btn-link btn-xs" href="{{ route('index.template.akta') }}"><i class="fa fa-chevron-left"></i></a>
+	Template Akta
+@endpush
 
-@section('action')
+@push('action')
 		<a class="btn btn-primary" href="{{route('issue.template.akta', ['id' => $data['info']['id']])}}" role="button">Issue</a>
 		<a class="btn btn-primary" href="{{route('edit.template.akta', ['id' => $data['info']['id']])}}" role="button">Edit</a>
-@endsection
+
+		<a class="btn btn-link p-t-none p-b-none" href="{{ route('issue.template.akta', ['id' => $data['info']['id']]) }}" role="button">Issue</a>
+		<a class="btn btn-link p-t-none p-b-none" href="{{ route('edit.template.akta', ['id' => $data['info']['id']]) }}" role="button">Edit</a>
+@endpush
 
 @section('center')
 	<p class="text-center">

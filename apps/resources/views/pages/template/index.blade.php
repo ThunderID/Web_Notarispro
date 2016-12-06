@@ -4,16 +4,16 @@
 	active
 @endsection
 
-@section('title')
-	<h4>Template Akta</h4>
-@endsection
+@push('title')
+	Template Akta
+@endpush
 
-@section('action')
-	<a class="btn btn-primary" href="{{route('create.template.akta')}}" role="button">Template Baru</a>
-@endsection
+@push('action')
+	<a class="btn btn-link p-t-none p-b-none" href="{{route('create.template.akta')}}" role="button">Template Baru</a>
+@endpush
 
 @section('left')
-	@include('components.filter')
+	@include('widgets.filter')
 @endsection
 
 @section('right')

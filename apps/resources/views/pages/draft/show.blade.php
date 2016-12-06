@@ -4,17 +4,15 @@
 	active
 @endsection
 
-@section('title')
-	<h4>
-		<small><a class="btn btn-primary btn-sm" href="{{route('index.draft.akta')}}"><</a></small>
-		Draft Akta
-	</h4>
-@endsection
+@push('title')
+	<a class="btn btn-link btn-xs" href="{{ route('index.draft.akta') }}"><i class="fa fa-chevron-left"></i></a>
+	Draft Akta
+@endpush
 
-@section('action')
-		<a class="btn btn-primary" href="{{route('issue.draft.akta', ['id' => $data['info']['id']])}}" role="button">Issue</a>
-		<a class="btn btn-primary" href="{{route('edit.draft.akta', ['id' => $data['info']['id']])}}" role="button">Edit</a>
-@endsection
+@push('action')
+		<a class="btn btn-link p-t-none p-b-none" href="{{ route('issue.draft.akta', ['id' => $data['info']['id']]) }}" role="button">Issue</a>
+		<a class="btn btn-link p-t-none p-b-none" href="{{ route('edit.draft.akta', ['id' => $data['info']['id']]) }}" role="button">Edit</a>
+@endpush
 
 @section('center')
 	<p class="text-center">
