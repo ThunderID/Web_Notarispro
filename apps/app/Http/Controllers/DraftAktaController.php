@@ -27,7 +27,7 @@ class DraftAktaController extends Controller
 
 	public function create($id = '123456789')
 	{
-		$this->curl_get('lihat/isi/draft/akta', $this->token, ['id' => $id]);
+		$this->curl_get('edit/isi/draft/akta', $this->token, ['id' => $id]);
 		
 		$data 		= $this->data;
 
