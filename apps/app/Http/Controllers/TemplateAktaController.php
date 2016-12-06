@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class TemplateAktaController extends Controller
 {
@@ -18,7 +19,7 @@ class TemplateAktaController extends Controller
 
 	public function index()
 	{
-		$this->curl_get('lihat/list/template', $this->token);
+		$this->curl_get('lihat/list/template/akta', $this->token);
 		
 		$data 		= $this->data;
 
@@ -27,7 +28,7 @@ class TemplateAktaController extends Controller
 
 	public function create($id = '123456789')
 	{
-		$this->curl_get('lihat/isi/template', $this->token, ['id' => $id]);
+		$this->curl_get('mulai/template/akta', $this->token, ['id' => $id]);
 		
 		$data 		= $this->data;
 
@@ -36,16 +37,9 @@ class TemplateAktaController extends Controller
 
 	public function store($id = null)
 	{
-		if(is_null($id))
-		{
-			$param 	= Input::all();
-		}
-		else
-		{
-			$param 	= array_merge(['id' => $id], Input::all());
-		}
+		$param 	= Input::all();
 
-		$this->curl_post('simpan/template', $this->token, $param);
+		$this->curl_post('simpan/template/akta', $this->token, $param);
 		
 		$data 		= $this->data;
 
@@ -54,7 +48,7 @@ class TemplateAktaController extends Controller
 
 	public function show($id)
 	{
-		$this->curl_get('lihat/isi/template', $this->token, ['id' => $id]);
+		$this->curl_get('lihat/isi/template/akta', $this->token, ['id' => $id]);
 
 		$data 		= $this->data;
 
@@ -63,7 +57,13 @@ class TemplateAktaController extends Controller
 
 	public function edit($id)
 	{
-		return $this->create($id);
+		$param 	= array_merge(['id' => $id], Input::all());
+
+		$this->curl_post('update/template/akta', $this->token, $param);
+		
+		$data 		= $this->data;
+
+		return Redirect::route('show.template.akta', $id);
 	}
 
 	public function update($id)
@@ -73,7 +73,7 @@ class TemplateAktaController extends Controller
 
 	public function destroy($id)
 	{
-		$this->curl_delete('hapus/template', $this->token, ['id' => $id]);
+		$this->curl_delete('hapus/template/akta', $this->token, ['id' => $id]);
 		
 		$data 		= $this->data;
 

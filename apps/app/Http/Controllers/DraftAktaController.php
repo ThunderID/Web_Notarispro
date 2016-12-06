@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class DraftAktaController extends Controller
 {
@@ -27,7 +28,7 @@ class DraftAktaController extends Controller
 
 	public function create($id = '123456789')
 	{
-		$this->curl_get('edit/isi/draft/akta', $this->token, ['id' => $id]);
+		$this->curl_get('mulai/draft/akta', $this->token, ['id' => $id]);
 		
 		$data 		= $this->data;
 
@@ -36,15 +37,8 @@ class DraftAktaController extends Controller
 
 	public function store($id = null)
 	{
-		if(is_null($id))
-		{
-			$param 	= Input::all();
-		}
-		else
-		{
-			$param 	= array_merge(['id' => $id], Input::all());
-		}
-
+		$param 	= Input::all();
+	
 		$this->curl_post('simpan/draft/akta', $this->token, $param);
 		
 		$data 		= $this->data;
@@ -63,12 +57,22 @@ class DraftAktaController extends Controller
 
 	public function edit($id)
 	{
-		return $this->create($id);
+		$this->curl_get('edit/isi/draft/akta', $this->token, ['id' => $id]);
+		
+		$data 		= $this->data;
+
+		return view('pages.draft.create', compact('data'));
 	}
 
 	public function update($id)
 	{
-		return $this->store($id);
+		$param 	= array_merge(['id' => $id], Input::all());
+
+		$this->curl_post('update/draft/akta', $this->token, $param);
+		
+		$data 		= $this->data;
+
+		return Redirect::route('show.draft.akta', $id);
 	}
 
 	public function destroy($id)
