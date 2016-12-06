@@ -12,8 +12,8 @@
 @endsection
 
 @section('action')
-		<a class="btn btn-primary" href="{{route('issue.draft.akta', ['id' => env('sandbox_id')])}}" role="button">Issue</a>
-		<a class="btn btn-primary" href="{{route('edit.draft.akta', ['id' => env('sandbox_id')])}}" role="button">Edit</a>
+		<a class="btn btn-primary" href="{{route('issue.draft.akta', ['id' => $data['info']['id']])}}" role="button">Issue</a>
+		<a class="btn btn-primary" href="{{route('edit.draft.akta', ['id' => $data['info']['id']])}}" role="button">Edit</a>
 @endsection
 
 @section('center')

@@ -9,9 +9,14 @@
 		<title>Notarispro.com</title>
 		<!-- Bootstrap Core CSS -->
 		<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://getbootstrap.com/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
 		<!-- Custom CSS -->
+		<link href="/css/app.css" rel="stylesheet">
+		<!-- plugin summernote -->
+		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+		<!-- plugin medium editor for yabwe -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 		<!-- Custom Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Muli:300,400" rel="stylesheet" >
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,8 +25,7 @@
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
-	
+	<body style="padding-top: 120px">
 		@include('layouts.partials._navigation')
 
 		<div class="container">
@@ -40,8 +44,11 @@
 			</div>
 		</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+		<!-- plugin medium editor clone for yabwe -->
+		<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+		<!-- plugin summernote -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
 	</body>
 </html>

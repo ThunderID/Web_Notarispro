@@ -1,9 +1,63 @@
+// pallete 1
+// $color1: rgba(57, 131, 206, 1);
+// $color2: rgba(255, 255, 255, 1);
+// $color3: rgba(230, 57, 70, 1);
+// $color4: rgba(241, 250, 238, 1);
+// $color5: rgba(168, 218, 220, 1);
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// pallete 2
+// $color1: rgba(57, 131, 206, 1);
+// $color2: rgba(255, 255, 255, 1);
+// $color3: rgba(160, 154, 188, 1);
+// $color4: rgba(182, 166, 202, 1);
+// $color5: rgba(213, 207, 225, 1);
+
+// pallete 3
+// $color1: rgba(57, 131, 206, 1);
+// $color2: rgba(255, 255, 255, 1);
+// $color3: rgba(34, 56, 67, 1);
+// $color4: rgba(239, 241, 243, 1);
+// $color5: rgba(219, 211, 216, 1);
+
+// pallete 4
+$color1: rgba(57, 131, 206, 1);
+$color2: rgba(255, 255, 255, 1);
+$color3: #3e6b98;
+$color4: rgba(0, 0, 0, 1);
+$color5: rgba(57, 61, 63, 1);
+$color6: #1b2a38;
+
 
 // Variables
 @import "variables";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Custom style
+@import "navbar.scss";
+@import "margin_and_padding.scss";
+@import "medium_editor.scss";
+
+body {
+	font-family: 'Muli', sans-serif !important;
+}
+a:hover {
+	color: $color3 !important;
+}
+
+// disabled blue outline all input
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active,
+.editable:focus
+{
+    outline:0px !important;
+    -webkit-appearance:none !important;
+}

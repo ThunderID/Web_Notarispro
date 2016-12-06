@@ -1,0 +1,47 @@
+// modified navbar bootstrap
+.navbar-default {
+	background-color: $color1;
+	color: $color2;
+	.navbar-brand {
+		width: 300px; 
+		@media (min-width: 768) {
+			width: auto;
+		}
+	}
+	.navbar-brand {
+		color: $color2 !important;
+		&:hover {
+			color: $color2 !important;
+		}
+	}
+	.navbar-nav.navbar-menu > li.active > a {
+		background-color: $color3;
+		color: $color2;
+		font-weight: 300;
+		&:hover, &:focus {
+			background-color: lighten($color3, 30%);
+			color: $color6 !important;
+		}
+	}
+	.navbar-nav.navbar-menu > li > a:hover {
+		background-color: lighten($color3, 30%);
+		color: $color6 !important;
+	}
+	.navbar-nav.navbar-feature > li > a {
+		color: $color2;
+		font-weight: 300;
+		&:hover {
+			color: $color6 !important;
+		}
+	}
+	.btn-link {
+		color: $color2 !important;
+		text-decoration: none;
+		&:hover {
+			color: $color6 !important;
+		}
+	}
+	a {
+		color: $color2 !important;
+	}
+}

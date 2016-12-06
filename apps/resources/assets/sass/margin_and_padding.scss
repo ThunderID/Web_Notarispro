@@ -1,0 +1,73 @@
+/**
+ * [margin & padding]
+ */
+
+// variable
+$space_none : 0px;
+$space_xs 	: 5px;
+$space_sm 	: 10px;
+$space_md 	: 15px;
+$space_lg 	: 20px;
+$space_xl 	: 30px;
+$space_xxl	: 40px;
+
+// padding none
+.p-t-none{			padding-top: $space_none !important;}
+.p-b-none{			padding-bottom: $space_none !important;}
+.p-l-none{			padding-left: $space_none !important;}
+.p-r-none{			padding-right: $space_none !important;}
+
+// padding xs
+// padding sm
+// padding md
+// padding lg
+
+// margin none
+.m-t-none{ 			margin-top: $space_none !important;}
+.m-b-none{			margin-bottom: $space_none !important;}
+.m-l-none{			margin-left: $space_none !important;}
+.m-r-none{			margin-right: $space_none !important;}
+.m-none{			margin: $space_none !important;}
+
+// margin xs
+.m-t-xs{			margin-top: $space_xs !important;}
+.m-b-xs{			margin-bottom: $space_xs !important;}
+.m-l-xs{			margin-left: $space_xs !important;}
+.m-r-xs{			margin-right: $space_xs !important;}
+.m-xs{				margin: $space_xs !important;}
+
+
+// margin sm
+.m-t-sm{			margin-top: $space_sm !important;}
+.m-b-sm{			margin-bottom: $space_sm !important;}
+.m-l-sm{			margin-left: $space_sm !important;}
+.m-r-sm{			margin-right: $space_sm !important;}
+.m-sm{				margin: $space_sm !important;}
+
+// margin md 
+.m-t-md{			margin-top: $space_md !important;}
+.m-b-md{			margin-bottom: $space_md !important;}
+.m-l-md{			margin-left: $space_md !important;}
+.m-r-md{			margin-right: $space_md !important;}
+.m-md{				margin: $space_md !important;}
+
+// margin lg
+.m-t-lg{			margin-top: $space_lg !important;}
+.m-b-lg{			margin-bottom: $space_lg !important;}
+.m-l-lg{			margin-left: $space_lg !important;}
+.m-r-lg{			margin-right: $space_lg !important;}
+.m-lg{				margin: $space_lg !important;}
+
+// margin xl
+.m-t-xl{			margin-top: $space_xl !important;}
+.m-b-xl{			margin-bottom: $space_xl !important;}
+.m-l-xl{			margin-left: $space_xl !important;}
+.m-r-xl{			margin-right: $space_xl !important;}
+.m-xl{				margin: $space_xl !important;}
+
+// margin xxl
+.m-t-xxl{			margin-top: $space_xxl !important;}
+.m-b-xxl{			margin-bottom: $space_xxl !important;}
+.m-l-xxl{			margin-left: $space_xxl !important;}
+.m-r-xxl{			margin-right: $space_xxl !important;}
+.m-xxl{				margin: $space_xxl !important;}

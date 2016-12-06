@@ -4,27 +4,34 @@
 	active
 @endsection
 
-@section('title')
-	<h4>Draft Akta</h4>
-@endsection
+@push('title')
+	Draft Akta
+@endpush
 
-@section('action')
-	<a class="btn btn-primary" href="{{route('create.draft.akta')}}" role="button">Mulai Drafting</a>
-@endsection
+@push('action')
+	<a class="btn btn-link p-t-none p-b-none" href="{{ route('create.draft.akta') }}">MULAI DRAFTING</a>
+@endpush
 
 @section('left')
-	@include('components.filter')
+	@include('widgets.filter')
 @endsection
 
 @section('right')
-	@foreach($data as $key => $value)
-		<p class="text-center">
-				{{json_encode($value)}}
-		</p>
-		<p class="text-center">
-			<a class="btn btn-primary" href="{{route('destroy.draft.akta', ['id' => env('sandbox_id')])}}" role="button">Hapus</a>
-			<a class="btn btn-primary" href="{{route('edit.draft.akta', ['id' => env('sandbox_id')])}}" role="button">Ubah</a>
-			<a class="btn btn-primary" href="{{route('show.draft.akta', ['id' => env('sandbox_id')])}}" role="button">Lihat</a>
-		</p>
-	@endforeach
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Writer ID</th>
+			<th>Owner ID</th>
+			<th>Owner Name</th>
+			<th>Created At</th>
+			<th>Updated At</th>
+		</tr>
+		@foreach($data as $k => $v)
+			<tr>
+				<td>1</td>
+			</tr>
+			 
+		@endforeach
+	</table>
 @endsection
