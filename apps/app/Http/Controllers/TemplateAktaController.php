@@ -59,11 +59,11 @@ class TemplateAktaController extends Controller
 	{
 		$param 	= array_merge(['id' => $id], Input::all());
 
-		$this->curl_post('update/template/akta', $this->token, $param);
+		$this->curl_get('edit/isi/template/akta', $this->token, $param);
 		
 		$data 		= $this->data;
 
-		return Redirect::route('show.template.akta', $id);
+		return view('pages.template.create', compact('data'));
 	}
 
 	public function update($id)

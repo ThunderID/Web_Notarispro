@@ -25,7 +25,7 @@ Route::resource('/draft/akta', 	'DraftAktaController',
 					]
 	]
 );
-Route::post('/draft/akta/{id}/issue',	  'DraftAktaController@index')->name('issue.draft.akta');
+Route::post('/draft/akta/{id}/issue',	  'DraftAktaController@issue')->name('issue.draft.akta');
 
 Route::resource('/template/akta',  'TemplateAktaController', 
     ['names'    =>  [
