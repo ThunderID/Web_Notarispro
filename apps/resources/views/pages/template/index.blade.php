@@ -17,14 +17,14 @@
 @endsection
 
 @section('right')
-	@foreach($data as $key => $value)
+	@foreach($data['data'] as $key => $value)
 		<p class="text-center">
 			{{json_encode($value)}}
 		</p>
 		<p class="text-center">
-			<a class="btn btn-primary" href="{{route('destroy.template.akta', ['id' => $value['info']['id']])}}" role="button">Hapus</a>
-			<a class="btn btn-primary" href="{{route('edit.template.akta', ['id' => $value['info']['id']])}}" role="button">Ubah</a>
-			<a class="btn btn-primary" href="{{route('show.template.akta', ['id' => $value['info']['id']])}}" role="button">Lihat</a>
+			<a class="btn btn-primary" href="{{route('destroy.template.akta', ['id' => $value['id']])}}" role="button">Hapus</a>
+			<a class="btn btn-primary" href="{{route('edit.template.akta', ['id' => $value['id']])}}" role="button">Ubah</a>
+			<a class="btn btn-primary" href="{{route('show.template.akta', ['id' => $value['id']])}}" role="button">Lihat</a>
 		</p>
 	@endforeach
 @endsection

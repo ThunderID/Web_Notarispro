@@ -51,8 +51,9 @@ class TemplateAktaController extends Controller
 		$this->curl_get('lihat/isi/template/akta', $this->token, ['id' => $id]);
 
 		$data 		= $this->data;
+		$info 		= $this->info;
 
-		return view('pages.template.show', compact('data'));
+		return view('pages.template.show', compact('data', 'info'));
 	}
 
 	public function edit($id)

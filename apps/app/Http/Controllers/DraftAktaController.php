@@ -51,8 +51,9 @@ class DraftAktaController extends Controller
 		$this->curl_get('lihat/isi/draft/akta', $this->token, ['id' => $id]);
 
 		$data 		= $this->data;
+		$info 		= $this->info;
 
-		return view('pages.draft.show', compact('data'));
+		return view('pages.draft.show', compact('data', 'info'));
 	}
 
 	public function edit($id)

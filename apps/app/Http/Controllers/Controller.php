@@ -40,8 +40,10 @@ class Controller extends BaseController
 		curl_close($curl);
 
 		$result 		= json_decode($result, true);
+
 		$this->status 	= $result['status'];
-		$this->data 	= $result['data']['data'];
+		$this->data 	= $result['data']['page_data'];
+		$this->info 	= $result['data']['page_info'];
 
 		return true;
     }

@@ -10,11 +10,11 @@
 @endpush
 
 @push('action')
-		<a class="btn btn-primary" href="{{route('issue.template.akta', ['id' => $data['info']['id']])}}" role="button">Issue</a>
-		<a class="btn btn-primary" href="{{route('edit.template.akta', ['id' => $data['info']['id']])}}" role="button">Edit</a>
+		<a class="btn btn-primary" href="{{route('issue.template.akta', ['id' => $info['id']])}}" role="button">Issue</a>
+		<a class="btn btn-primary" href="{{route('edit.template.akta', ['id' => $info['id']])}}" role="button">Edit</a>
 
-		<a class="btn btn-link p-t-none p-b-none" href="{{ route('issue.template.akta', ['id' => $data['info']['id']]) }}" role="button">Issue</a>
-		<a class="btn btn-link p-t-none p-b-none" href="{{ route('edit.template.akta', ['id' => $data['info']['id']]) }}" role="button">Edit</a>
+		<a class="btn btn-link p-t-none p-b-none" href="{{ route('issue.template.akta', ['id' => $info['id']]) }}" role="button">Issue</a>
+		<a class="btn btn-link p-t-none p-b-none" href="{{ route('edit.template.akta', ['id' => $info['id']]) }}" role="button">Edit</a>
 @endpush
 
 @section('center')
