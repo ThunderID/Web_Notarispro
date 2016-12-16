@@ -1,0 +1,14 @@
+.table {
+	thead {
+		tr {
+			th {
+				color: lighten($color4, 50%) !important;
+			}
+		}
+	}
+	tbody {
+		tr {
+			cursor: pointer;
+		}
+	}
+}

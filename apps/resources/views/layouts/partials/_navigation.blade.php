@@ -36,9 +36,9 @@
 	<!-- title & action page -->
 	<div class="container">
 		<div class="navbar-header">
-			<h3 class="m-b-lg">@stack('title')</h3>
+			<h3 class="page-title m-b-lg">@stack('title')</h3>
 		</div>
-		<ul class="nav navbar-nav navbar-right m-t-lg m-b-lg m-r-none">
+		<ul class="page-action nav navbar-nav navbar-right m-t-lg m-b-lg m-r-none">
 			@stack('action')
 		</ul>
 	</div>

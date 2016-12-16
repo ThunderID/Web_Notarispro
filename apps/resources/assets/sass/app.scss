@@ -28,19 +28,31 @@ $color5: rgba(57, 61, 63, 1);
 $color6: #1b2a38;
 
 
-// Variables
-@import "variables";
+// core & variable bootstrap
+@import "variables.scss";
+@import "bootstrap/bootstrap.scss";
+// theme bootstrap flatfly
+@import "bootstrap.flatly.scss";
+
 
 // Custom style
 @import "navbar.scss";
 @import "margin_and_padding.scss";
-@import "medium_editor.scss";
+@import "editor.scss";
+@import "form.scss";
+@import "table.scss";
 
 body {
-	font-family: 'Muli', sans-serif !important;
+	font-family: 'Open Sans', sans-serif !important;
+	letter-spacing: 0.02em;
 }
-a:hover {
-	color: $color3 !important;
+a {
+	text-decoration: none !important;
+	color: $color1;
+	cursor: pointer;
+	&:hover {
+		color: $color3 !important;
+	}
 }
 
 // disabled blue outline all input
@@ -58,6 +70,7 @@ label:focus,
 .btn.active,
 .editable:focus
 {
-    outline:0px !important;
-    -webkit-appearance:none !important;
+    outline: 0px !important;
+    -webkit-appearance: none !important;
+    box-shadow: none !important;
 }

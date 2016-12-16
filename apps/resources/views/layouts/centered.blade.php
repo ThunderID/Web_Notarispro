@@ -14,9 +14,10 @@
 		<!-- plugin summernote -->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 		<!-- plugin medium editor for yabwe -->
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/plugins/medium-editor/dist/css/medium-editor.css">
+		<link rel="stylesheet" href="/plugins/medium-editor/dist/css/themes/bootstrap.min.css">
 		<!-- Custom Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Muli:300,400" rel="stylesheet" >
+
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +26,7 @@
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body style="padding-top: 120px">
+	<body style="padding-top: 150px">
 		@include('layouts.partials._navigation')
 
 		<div class="container">
@@ -47,10 +48,17 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 		<!-- Custom JS -->
-		<link href="/css/app.js" rel="stylesheet">
+		<script href="/js/app.js"></script>
 		<!-- plugin medium editor clone for yabwe -->
-		<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+		<script src="/plugins/medium-editor/dist/js/medium-editor.min.js"></script>
+		<!-- plugin rangy extension medium editor clone-->
+		<script src="/plugins/rangy/rangy-core.js"></script>
+		<script src="/plugins/rangy/rangy-classapplier.js"></script>
+		<!-- plugin medium button extension medium editor clone-->
+		<script src="/plugins/medium-button/dist/medium-button.min.js"></script>
+		
 		<!-- plugin summernote -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+		@stack('scripts')
 	</body>
 </html>

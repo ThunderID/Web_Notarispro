@@ -20,18 +20,31 @@ class DraftAktaController extends Controller
 	public function index()
 	{
 		$this->curl_get('lihat/list/draft/akta', $this->token);
-		
-		$data 		= $this->data;
 
-		return view('pages.draft.index', compact('data'));
+		$parsing		= '{"status":"success","data":{"page_info":{"total_data":1,"pagination":{"current_page":1,"start_number":1,"per_page":20}},"page_data":{"header":["title","writer","last_update"],"data":[{"id":"5850a0b5b6cf8a0007533df2","title":"Akta Pemberian Hak Tanggungan II","type":"draft_akta","writer":"pname","writer_id":"pid","last_update":"2016-12-14 08:30:29"}]}}}';
+		$result 		= json_decode($parsing, true);
+		
+		// $data 		= $this->data;
+		$status			= $result['status'];
+		$data 			= $result['data']['page_data'];
+		$info 			= $result['data']['page_info'];
+
+		return view('pages.draft.index', compact('data', 'info'));
 	}
 
 	public function create($id = '123456789')
 	{
 		$this->curl_get('mulai/draft/akta', $this->token, ['id' => $id]);
 		
-		$data 		= $this->data;
-
+		$parsing		= '{"data":{"page_info":{"id":"123456789"},"page_data":{"title":{"header":["title"],"data":{"title":{"element-class":"input","element-type":"string","element-properties":{"value":"Akta Jual Beli Tanah","validation":{"required":true,"max":255}}}}},"content":{"header":["paragraph_0"],"data":{"paragraph_0":{"element-class":"string","element-properties":{"value":"Isi Akta","validation":{"required":true}}}}}}}}';
+		
+		$result 		= json_decode($parsing, true);
+		
+		// $data 		= $this->data;
+		$status			= $result['status'];
+		$data 			= $result['data']['page_data'];
+		$info 			= $result['data']['page_info'];
+		
 		return view('pages.draft.create', compact('data'));
 	}
 

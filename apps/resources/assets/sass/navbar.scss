@@ -10,10 +10,12 @@
 	}
 	.navbar-brand {
 		color: $color2 !important;
+		font-weight: 300;
 		&:hover {
 			color: $color2 !important;
 		}
 	}
+	// menu navbar on active
 	.navbar-nav.navbar-menu > li.active > a {
 		background-color: $color3;
 		color: $color2;
@@ -23,6 +25,7 @@
 			color: $color6 !important;
 		}
 	}
+	// menu navbar link
 	.navbar-nav.navbar-menu > li > a:hover {
 		background-color: lighten($color3, 30%);
 		color: $color6 !important;
@@ -37,11 +40,29 @@
 	.btn-link {
 		color: $color2 !important;
 		text-decoration: none;
+		font-weight: 300;
 		&:hover {
 			color: $color6 !important;
+		}
+		&.active {
+			background-color: $color3;
+			color: $color2;
+			font-weight: 300;
+			&:hover, &:focus {
+				background-color: lighten($color3, 30%);
+				color: $color6 !important;
+			}
 		}
 	}
 	a {
 		color: $color2 !important;
+	}
+	// title per page
+	.page-title {
+		font-weight: 300;
+	}
+	// action per page
+	.page-action {
+		
 	}
 }

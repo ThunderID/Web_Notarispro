@@ -9,22 +9,35 @@
 @endpush
 
 @push('action')
-	<a class="btn btn-link p-t-none p-b-none" href="{{route('create.template.akta')}}" role="button">Template Baru</a>
+	<a class="btn btn-link p-t-none p-b-none" href="{{ route('create.template.akta') }}" role="button">Template Baru</a>
 @endpush
 
 @section('left')
-	@include('widgets.filter')
+	@include('widgets.filter-template')
 @endsection
 
 @section('right')
-	@foreach($data['data'] as $key => $value)
-		<p class="text-center">
-			{{json_encode($value)}}
-		</p>
-		<p class="text-center">
-			<a class="btn btn-primary" href="{{route('destroy.template.akta', ['id' => $value['id']])}}" role="button">Hapus</a>
-			<a class="btn btn-primary" href="{{route('edit.template.akta', ['id' => $value['id']])}}" role="button">Ubah</a>
-			<a class="btn btn-primary" href="{{route('show.template.akta', ['id' => $value['id']])}}" role="button">Lihat</a>
-		</p>
-	@endforeach
+	@include('components.table.component', [
+		'component_id'		=> 'table-template',
+	    'component_data' 	=> $data,
+	    'component_style'	=> [
+	        'class' 	=> 'table-hover table-template', 
+	        'noDataMsg' => 'Belum ada template, silahkan tambah template',
+	        'paging'    =>  [
+	            'total_data' => $info['total_data'],
+	            'take'       => $info['pagination']['per_page'],
+	            'class'      => 'text-center'
+	        ]
+	    ],
+	    'component_debug'=> true
+	])
+	
+	<div class="clearfix">&nbsp;</div>
+	<div class="clearfix">&nbsp;</div>
 @endsection
+
+@push('scripts')
+	<script>
+		tableSelector.init('table-template', '{{ route("index.template.akta") }}');
+	</script>
+@endpush

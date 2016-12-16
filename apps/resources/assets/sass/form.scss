@@ -1,0 +1,9 @@
+@mixin border-color($param) {
+	border-color: $param !important;
+}
+.form-control{
+	&:focus { @include border-color($color3); }
+}
+.input {
+	&:focus { @include border-color($color3); }
+}

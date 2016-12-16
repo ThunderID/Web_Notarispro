@@ -2,7 +2,7 @@
 webnotarispro_nginx:
     build: ./nginx
     ports:
-        - 8500:80
+        - 80:80
     links:
         - webnotarispro_php
     volumes_from:

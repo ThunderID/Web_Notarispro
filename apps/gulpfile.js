@@ -15,5 +15,6 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
     mix.sass('app.scss')
-       .scripts(['input-components.js'], 'app.js');
+       .scripts(['input-components.js'], 'public/js/app.js')
+       .copy('resources/assets/plugins/', 'public/plugins/');
 });

@@ -24,9 +24,6 @@
 
 @section('center')
 	<p class="text-center">
-		@include('components.thunderComponent', [
-			'components'	=> $data,
-			'styles'		=> []
-		])
+		
 	</p>
 @endsection
