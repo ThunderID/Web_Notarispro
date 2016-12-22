@@ -11,39 +11,48 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected $ipserver;
+    protected $port;
+
+	function __construct() {
+		$this->ipserver = env('APP_IPSERVER', '128.199.145.173');
+		$this->port 	= env('APP_PORTSERVER', '9100');
+	}
+
     public function curl_get($path_string, $token, $params = [])
     {
 		//url-ify the data for the POST
-		// $fields_string	= http_build_query($params);
+		$fields_string	= http_build_query($params);
 
-		// $url			= 'http://192.168.1.17/'.$path_string.'?'.$fields_string;
 
-		// //open connection
-		// $header[]		= "Authorization: Bearer ".$token;
+		$url			= 'http://' .$this->ipserver. '/'.$path_string.'?'.$fields_string;
 
-		// $curl			= curl_init();
+		//open connection
+		$header[]		= "Authorization: Bearer ".$token;
 
-		// curl_setopt_array($curl, array(
-		// 					  CURLOPT_PORT 				=> "8300",
-		// 					  CURLOPT_URL 				=> $url,
-		// 					  CURLOPT_RETURNTRANSFER 	=> true,
-		// 					  CURLOPT_ENCODING 			=> "",
-		// 					  CURLOPT_MAXREDIRS 		=> 10,
-		// 					  CURLOPT_TIMEOUT 			=> 30,
-		// 					  CURLOPT_HTTP_VERSION 		=> CURL_HTTP_VERSION_1_1,
-		// 					  CURLOPT_CUSTOMREQUEST 	=> "GET",
-		// 					  CURLOPT_HTTPHEADER 		=> $header,
-		// 				));
+		$curl			= curl_init();
 
-		// $result			= curl_exec($curl);
+		curl_setopt_array($curl, array(
+							  CURLOPT_PORT 				=> $this->port,
+							  CURLOPT_URL 				=> $url,
+							  CURLOPT_RETURNTRANSFER 	=> true,
+							  CURLOPT_ENCODING 			=> "",
+							  CURLOPT_MAXREDIRS 		=> 10,
+							  CURLOPT_TIMEOUT 			=> 30,
+							  CURLOPT_HTTP_VERSION 		=> CURL_HTTP_VERSION_1_1,
+							  CURLOPT_CUSTOMREQUEST 	=> "GET",
+							  CURLOPT_HTTPHEADER 		=> $header,
+						));
 
-		// curl_close($curl);
+		$result			= curl_exec($curl);
 
-		// $result 		= json_decode($result, true);
+		curl_close($curl);
 
-		// $this->status 	= $result['status'];
-		// $this->data 	= $result['data']['page_data'];
-		// $this->info 	= $result['data']['page_info'];
+		$result 		= json_decode($result, true);
+
+		$this->status 	= $result['status'];
+		$this->data 	= $result['data']['page_data'];
+		$this->info 	= $result['data']['page_info'];
 
 		return true;
     }
@@ -53,7 +62,7 @@ class Controller extends BaseController
 		//url-ify the data for the POST
 		$fields_string	= http_build_query($params);
 
-		$url			= 'http://172.17.0.4/'.$path_string;
+		$url			= 'http://' .$this->ipserver. '/'.$path_string;
 
 		//open connection
 		$header[]		= "Authorization: Bearer ".$token;
@@ -61,7 +70,7 @@ class Controller extends BaseController
 		$curl			= curl_init();
 
 		curl_setopt_array($curl, array(
-							  CURLOPT_PORT 				=> "80",
+							  CURLOPT_PORT 				=> $this->port,
 							  CURLOPT_URL 				=> $url,
 							  CURLOPT_RETURNTRANSFER 	=> true,
 							  CURLOPT_ENCODING 			=> "",
@@ -89,7 +98,7 @@ class Controller extends BaseController
 		//url-ify the data for the POST
 		$fields_string	= http_build_query($params);
 
-		$url			= 'http://172.17.0.4/'.$path_string;
+		$url			= 'http://' .$this->ipserver. '/'.$path_string;
 
 		//open connection
 		$header[]		= "Authorization: Bearer ".$token;
@@ -97,7 +106,7 @@ class Controller extends BaseController
 		$curl			= curl_init();
 
 		curl_setopt_array($curl, array(
-							  CURLOPT_PORT 				=> "80",
+							  CURLOPT_PORT 				=> $this->port,
 							  CURLOPT_URL 				=> $url,
 							  CURLOPT_RETURNTRANSFER 	=> true,
 							  CURLOPT_ENCODING 			=> "",

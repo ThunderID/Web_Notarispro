@@ -38,6 +38,7 @@
 
 @push('scripts')
 	<script>
-		tableSelector.init('table-akta', '{{ route("index.draft.akta") }}');
+		url = "{{ route('index.draft.akta') }}";
+		tableSelector.init(url);
 	</script>
 @endpush

@@ -14,6 +14,7 @@ class DraftAktaController extends Controller
 	 */
 	public function __construct()
 	{
+		parent::__construct();
 		$this->token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjRmMWcyM2ExMmFhIn0.eyJpc3MiOiJodHRwOlwvXC9leGFtcGxlLmNvbSIsImF1ZCI6Imh0dHA6XC9cL2V4YW1wbGUub3JnIiwianRpIjoiNGYxZzIzYTEyYWEiLCJpYXQiOjE0ODA5MDcwNTgsIm5iZiI6MTQ4MDkwNzExOCwiZXhwIjoxNDgwOTEwNjU4LCJwaWQiOiJwaWQiLCJvaWQiOiJvaWQiLCJwbmFtZSI6InBuYW1lIiwib25hbWUiOiJvbmFtZSIsInJvbGUiOiJkcmFmdGVyIn0.CIjsWNryRNH7j2EGSWsZuAgPGuva1thc_UtHi-33pqyXlov07d-DGFNDw69mquXz1GxyCRjjkRnKHb3hOCMwWopdBZ1O1SM35u-9y2FrDLGWapHdXJjaTc1Qexzhs9lwDwGTrryZ1NQ0iARyS4ghpujIhtTs9R0254fpTviVoaA";
 	}
 
@@ -21,13 +22,18 @@ class DraftAktaController extends Controller
 	{
 		$this->curl_get('lihat/list/draft/akta', $this->token);
 
-		$parsing		= '{"status":"success","data":{"page_info":{"total_data":1,"pagination":{"current_page":1,"start_number":1,"per_page":20}},"page_data":{"header":["title","writer","last_update"],"data":[{"id":"5850a0b5b6cf8a0007533df2","title":"Akta Pemberian Hak Tanggungan II","type":"draft_akta","writer":"pname","writer_id":"pid","last_update":"2016-12-14 08:30:29"}]}}}';
-		$result 		= json_decode($parsing, true);
+		// tes data
+		// $parsing		= '{"status":"success","data":{"page_info":{"total_data":1,"pagination":{"current_page":1,"start_number":1,"per_page":20}},"page_data":{"header":["title","writer","last_update"],"data":[{"id":"5850a0b5b6cf8a0007533df2","title":"Akta Pemberian Hak Tanggungan II","type":"draft_akta","writer":"pname","writer_id":"pid","last_update":"2016-12-14 08:30:29"}]}}}';
+		// $result 		= json_decode($parsing, true);
 		
-		// $data 		= $this->data;
-		$status			= $result['status'];
-		$data 			= $result['data']['page_data'];
-		$info 			= $result['data']['page_info'];
+		// // $data 		= $this->data;
+		// $status			= $result['status'];
+		// $data 			= $result['data']['page_data'];
+		// $info 			= $result['data']['page_info'];
+
+		$status			= $this->status;
+		$data 			= $this->data;
+		$info 			= $this->info;
 
 		return view('pages.draft.index', compact('data', 'info'));
 	}
@@ -36,16 +42,20 @@ class DraftAktaController extends Controller
 	{
 		$this->curl_get('mulai/draft/akta', $this->token, ['id' => $id]);
 		
-		$parsing		= '{"data":{"page_info":{"id":"123456789"},"page_data":{"title":{"header":["title"],"data":{"title":{"element-class":"input","element-type":"string","element-properties":{"value":"Akta Jual Beli Tanah","validation":{"required":true,"max":255}}}}},"content":{"header":["paragraph_0"],"data":{"paragraph_0":{"element-class":"string","element-properties":{"value":"Isi Akta","validation":{"required":true}}}}}}}}';
+		// // tes data
+		// $parsing		= '{"status":"success","data":{"page_info":{"id":"123456789"},"page_data":{"title":{"header":["title"],"data":{"title":{"element-class":"input","element-type":"string","element-properties":{"value":"Akta Jual Beli Tanah","validation":{"required":true,"max":255}}}}},"content":{"header":["paragraph_0", "paragraph_1"],"data":{"paragraph_0":{"element-class":"input", "element-type":"text", "element-properties":{"value":"Isi Akta","validation":{"required":true}}}, "paragraph_1":{"element-class":"input", "element-type":"text", "element-properties":{"value":"Isi Akta","validation":{"required":true}}}}}}}}';
 		
-		$result 		= json_decode($parsing, true);
+		// $result 		= json_decode($parsing, true);
 		
-		// $data 		= $this->data;
-		$status			= $result['status'];
-		$data 			= $result['data']['page_data'];
-		$info 			= $result['data']['page_info'];
+		// $status			= $result['status'];
+		// $data 			= $result['data']['page_data'];
+		// $info 			= $result['data']['page_info'];
 		
-		return view('pages.draft.create', compact('data'));
+		$status			= $this->status;
+		$data 			= $this->data;
+		$info 			= $this->info;
+		
+		return view('pages.draft.create', compact('data', 'info'));
 	}
 
 	public function store($id = null)
@@ -73,9 +83,11 @@ class DraftAktaController extends Controller
 	{
 		$this->curl_get('edit/isi/draft/akta', $this->token, ['id' => $id]);
 		
-		$data 		= $this->data;
+		$status			= $this->status;
+		$data 			= $this->data;
+		$info 			= $this->info;
 
-		return view('pages.draft.create', compact('data'));
+		return view('pages.draft.create', compact('data', 'info'));
 	}
 
 	public function update($id)

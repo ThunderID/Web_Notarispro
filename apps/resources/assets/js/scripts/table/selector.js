@@ -5,10 +5,13 @@
 	},
 	goUrl : function (el, url) {
 		id = this.getID(el);
-		window.location = url + '/' + id;
+		
+		if (typeof(id) != "undefined") {
+			window.location = url + '/' + id;
+		}
 	},
-	init: function(el, url) {
-		$('#' + el).find('tbody tr').on('click', function (){
+	init: function(url) {
+		$('.table').find('tbody tr').on('click', function (){
 			tableSelector.goUrl($(this), url);
 		});
 	}

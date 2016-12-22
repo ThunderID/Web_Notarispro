@@ -20,13 +20,17 @@
 // $color5: rgba(219, 211, 216, 1);
 
 // pallete 4
-$color1: rgba(57, 131, 206, 1);
-$color2: rgba(255, 255, 255, 1);
-$color3: #3e6b98;
-$color4: rgba(0, 0, 0, 1);
+$color1: rgba(57, 131, 206, 1); // blue
+$color2: rgba(255, 255, 255, 1); // white
+$color3: #3e6b98; // blue dark
+$color4: rgba(0, 0, 0, 1); // black
 $color5: rgba(57, 61, 63, 1);
 $color6: #1b2a38;
+$link_active: darken($color3, 30%);
 
+// color
+$white: $color2;
+$grey-light: #e1e1e1;
 
 // core & variable bootstrap
 @import "variables.scss";
@@ -36,11 +40,14 @@ $color6: #1b2a38;
 
 
 // Custom style
+@import "color.scss";
 @import "navbar.scss";
+@import "side_navigation.scss";
 @import "margin_and_padding.scss";
-@import "editor.scss";
 @import "form.scss";
 @import "table.scss";
+@import "draft_template.scss";
+@import "wizard.scss";
 
 body {
 	font-family: 'Open Sans', sans-serif !important;
@@ -74,3 +81,6 @@ label:focus,
     -webkit-appearance: none !important;
     box-shadow: none !important;
 }
+
+// display
+.inline-block{ display: inline-block !important; }

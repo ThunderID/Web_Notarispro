@@ -7,8 +7,6 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<title>Notarispro.com</title>
-		<!-- Bootstrap Core CSS -->
-		<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Custom CSS -->
 		<link href="/css/app.css" rel="stylesheet">
 		<!-- plugin summernote -->
@@ -17,7 +15,7 @@
 		<link rel="stylesheet" href="/plugins/medium-editor/dist/css/medium-editor.css">
 		<link rel="stylesheet" href="/plugins/medium-editor/dist/css/themes/bootstrap.min.css">
 		<!-- Custom Fonts -->
-
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,18 +24,10 @@
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body style="padding-top: 150px">
+	<body style="padding-top: 130px">
 		@include('layouts.partials._navigation')
 
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					@yield('title')
-				</div>
-				<div class="col-sm-9 text-right">
-					@yield('action')
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-sm-12">
 					@yield('center')

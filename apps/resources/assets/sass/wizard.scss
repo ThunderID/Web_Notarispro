@@ -1,0 +1,14 @@
+.info-wizard {
+	.nav-pills > li.active > a {
+		background-color: transparent !important;
+		color: $color3 !important;
+	}
+	.nav-pills > li > a {
+		background-color: transparent !important;
+		color: $color1 !important;
+		&:hover {
+			background-color: transparent !important;
+			color: $color3 !important;
+		}
+	}
+}

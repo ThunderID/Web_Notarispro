@@ -3,7 +3,7 @@
 	background-color: $color1;
 	color: $color2;
 	.navbar-brand {
-		width: 300px; 
+		width:   300px; 
 		@media (min-width: 768) {
 			width: auto;
 		}
@@ -34,6 +34,7 @@
 		color: $color2;
 		font-weight: 300;
 		&:hover {
+			background-color: lighten($color3, 30%);
 			color: $color6 !important;
 		}
 	}
@@ -42,6 +43,7 @@
 		text-decoration: none;
 		font-weight: 300;
 		&:hover {
+			background-color: lighten($color3, 30%) !important;
 			color: $color6 !important;
 		}
 		&.active {
@@ -56,6 +58,10 @@
 	}
 	a {
 		color: $color2 !important;
+		&:hover {
+			background-color: lighten($color3, 30%);
+			color: $color6 !important;
+		}
 	}
 	// title per page
 	.page-title {

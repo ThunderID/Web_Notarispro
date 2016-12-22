@@ -23,9 +23,11 @@
 @endpush
 
 @section('center')
-	<form>
-		<textarea name="tes" class="medium-editor editable m-t-md" cols="30" rows="10"></textarea>
-	</form>
+	<div class="panel panel-default page-draft center-block">
+		<div class="form panel-body">
+			<textarea name="tes" class="medium-editor editable m-t-sm" cols="30" rows="10"></textarea>
+		</div>
+	</div>
 @endsection
 
 @push('scripts')
@@ -80,29 +82,48 @@
 
 		var editor = new MediumEditor('.medium-editor', {
 			toolbar: {
-				buttons: ['bold', 'italic', 'underline', 'highlighter', 'contoh']
+				buttons: ['bold', 'italic', 'underline', 'justifyLeft', 'justifyCenter', 'justifyRight', 'orderedlist', 'unorderedlist', 'addInput',
+					{
+						name: 'h4',
+						contentFA: '<i class="fa fa-header"></i>',
+					},
+					'uppercase'
+				]
+			},
+			placeholder: {
+				text: 'Tulis disini...',
+				hideOnClick: true
 			},
 			buttonLabels: 'fontawesome',
 			paste: {
-			       cleanPastedHTML: true
-			   },
+				cleanPastedHTML: true
+			},
 			extensions: {
 				'highlighter': new HighlighterButton(),
-				'contoh': new MediumButton({
-					label: '%%name%%', 
+				'addInput': new MediumButton({
+					label: '%input%', 
 					action: function (html, mark, parent) {
 						temp = html;
-						return html.replace(temp, temp + ' %%name%% ');
+						return html.replace(temp, temp + ' %input% ');
+					}
+				}),
+				'uppercase': new MediumButton({
+					label: 'uppercase', 
+					action: function (html, mark, parent) {
+						temp = html;
+						return html.replace(temp, '<span class="text-uppercase">' + temp + '</span>');
 					}
 				}),
 			}
 		});
 
 		var triggerAutoSave = function (event, editable) {
-		    console.log(editable);
+			// event auto save
 		};
 
 		var throttledAutoSave = MediumEditor.util.throttle(triggerAutoSave, 1000);
 		editor.subscribe('editableInput', throttledAutoSave);
+
+		$('body').addClass('bg-grey-light');
 	</script>
 @endpush

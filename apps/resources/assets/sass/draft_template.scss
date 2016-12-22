@@ -1,0 +1,58 @@
+.page-draft {
+	width: 793px;
+	height: 29cm;
+	font-family: Monospace !important;
+	line-height: 2 !important;
+	.panel-body {
+		margin-top: 2cm;
+		margin-left: 6cm;
+		margin-right: 1cm;
+		margin-bottom: 3cm;
+		.editable {
+			cursor: text;
+			&:after {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.medium-editor {
+	font-family: Monospace !important;
+	height: inherit !important;
+	border: 0px !important;
+	a {
+		color: $color3 !important;
+		text-decoration: underline;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: Monospace !important;
+	}
+}
+.medium-editor-toolbar ul {
+	background-color: $color1;
+	color: $color2;
+	font-family: 'Open Sans', sans-serif !important;
+	li button {
+		border-right: 0;
+		padding: 8px !important;
+		font-size: 12px !important;
+		&:hover {
+			background-color: $color3;
+		}
+		&:active, &.medium-editor-button-active {
+			background-color: $color3;
+		}
+	}
+}
+.medium-toolbar-arrow-under:after {
+	border-color: $color1;
+}
+.medium-editor-placeholder:after {
+	color: lighten($color4, 60%) !important;
+	font-style: normal !important;
+}
+mark.highlight {
+	background-color: $color1 !important;
+	color: $color2 !important;
+}
