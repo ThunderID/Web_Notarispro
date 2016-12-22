@@ -14,7 +14,16 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .scripts(['input-components.js'], 'public/js/app.js')
-       .copy('resources/assets/plugins/', 'public/plugins/');
+	mix.sass('app.scss')
+		.scripts([
+					'../../../node_modules/jquery/dist/jquery.js',
+					'../../../node_modules/jquery-validation/dist/jquery.validate.js',
+					'../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+					'../../../node_modules/rangy/lib/rangy-core.js',
+					'../../../node_modules/rangy/lib/rangy-classapplier.js',
+					'../../../node_modules/medium-editor/dist/medium-editor.js',
+					'scripts/table/selector.js',
+					'jquery.bootstrap.wizard.js',
+					'input-components.js'], 'public/js/app.js')
+		.copy('resources/assets/plugins/', 'public/plugins/');
 });
