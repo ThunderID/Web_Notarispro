@@ -1,4 +1,4 @@
-;var tableSelector = {
+var tableSelector = {
 	getID : function (el) {
 		id = el.data('id');
 		return id;

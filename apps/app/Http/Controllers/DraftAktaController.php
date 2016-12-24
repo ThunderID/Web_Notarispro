@@ -87,6 +87,32 @@ class DraftAktaController extends Controller
 		$data 			= $this->data;
 		$info 			= $this->info;
 
+		// add new field 'type template' if empty value title
+		if (!empty($data['title']['data']['title']['element-properties']['value'])) 
+		{
+			$this->curl_get('lihat/list/template/akta', $this->token);
+
+			// get list template
+			foreach ($this->data['data'] as $k => $v) {
+				$list_template[$v['id']]		= $v['title'];
+			}
+		}
+
+		$data['type']	= [
+			'header'	=> ['type'],
+			'data'		=> [
+				'type'	=> [
+					'element-class'			=> 'input',
+					'element-type'			=> 'select',
+					'element-properties'	=> [
+						'value'			=> null,
+						'validation'	=> null,
+						'options'		=> $list_template
+					]
+				]
+			]
+		];
+
 		return view('pages.draft.create', compact('data', 'info'));
 	}
 

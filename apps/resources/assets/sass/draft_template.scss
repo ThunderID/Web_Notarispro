@@ -1,6 +1,6 @@
 .page-draft {
 	width: 793px;
-	height: 29cm;
+	// height: 29cm;
 	font-family: Monospace !important;
 	line-height: 2 !important;
 	.panel-body {
@@ -10,6 +10,7 @@
 		margin-bottom: 3cm;
 		.editable {
 			cursor: text;
+			line-height: 2 !important;
 			&:after {
 				margin-top: 0;
 			}

@@ -23,15 +23,17 @@
 @endpush
 
 @section('left')
-	@include('widgets.list-draft-akta')
+	<div class="m-t-xl">
+		@include('widgets.list-draft-akta')
+	</div>
 @endsection
 
 @section('right')
 	<div id="wizard" class="info-wizard text-center">
-		<div class="">
-			<ul class="nav nav-pills">
+		<div class="p-b-sm">
+			<ul class="nav nav-pills inline-block">
 				<li class="nav-item m-r-xl">
-					<a href="#" class="nav-link button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a>
+					<a href="#" class="nav-link button-previous">Sebelumnya &nbsp;&nbsp; <i class="fa fa-angle-left"></i></a>
 				</li>
 				<li class="nav-item">
 					<a href="#draft-periphal" class="nav-link" data-toggle="tab">Langkah 1</a>
@@ -43,50 +45,70 @@
 					<a href="#draft-preview" class="nav-link" data-toggle="tab">Langkah 3</a>
 				</li>
 				<li class="nav-item m-l-xl">
-					<a href="#" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
+					<a href="#draft-dokumen" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
 				</li>
 			</ul>
 		</div>
-		<div class="tab-content text-left">
+		<div class="tab-content text-left m-t-sm">
 			<div class="tab-pane" id="draft-periphal">
 				<div class="form">
 					@include('components.input.component', [
+						'component_id' 		=> 'input-draft-type',
+						'component_data' 	=> $data['type'],
+						'component_style' 	=> [
+							'type'		=> [
+								'label'		=> 'jenis template',
+								'class'		=> 'select-template input-draft-type'
+							]
+						],
+						'component_debug'	=> true
+					])
+
+					@include('components.input.component', [
 						'component_id' 		=> 'input-draft-title',
 						'component_data' 	=> $data['title'],
-						'component_style' 	=> null,
+						'component_style' 	=> [
+							'title'		=> [
+								'class'		=> 'input-draft-title'
+							]
+						],
 						'component_debug'	=> true
 					])
 				</div>
 			</div>
 			<div class="tab-pane content-dokumen" id="draft-dokumen">
-				<div class="panel panel-default page-draft center-block m-t-xl m-b-xl">
-					<div class="form panel-body p-none">
-						<?php
-							$obj_comp_style = null;
+				<div class="m-t-md">
+					<div class="panel panel-default page-draft center-block">
+						<div class="form panel-body p-none">
+							<?php
+								$obj_comp_style = null;
 
-							foreach ($data['content']['data'] as $key => $value) {
-								if (array_first($data['content']['data']) == $value){
-									$obj_comp_style[$key]	= [
-																	'label' => '',
-																	'class'	=> 'medium-editor editable p-none'
+								foreach ($data['content']['data'] as $key => $value) {
+									if (array_first($data['content']['data']) == $value){
+										$obj_comp_style[$key]	= [
+																		'label' => '',
+																		'class'	=> 'medium-editor editable p-none'
+																	];
+									}else{
+										$obj_comp_style[$key]	 =  [
+																		'label' => '',
+																		'class'	=> 'medium-editor editable m-t-m-xl p-none'
 																];
-								}else{
-									$obj_comp_style[$key]	 =  [
-																	'label' => '',
-																	'class'	=> 'medium-editor editable m-t-m-xl p-none'
-															];
-								}
-							}	
-						?>
+									}
+								}	
+							?>
 
-						@include('components.input.component', [
-							'component_id' 		=> 'input-draft-content',
-							'component_data' 	=> $data['content'],
-							'component_style' 	=> $obj_comp_style,
-							'component_debug'	=> true
-						])
+							@include('components.input.component', [
+								'component_id' 		=> 'input-draft-content',
+								'component_data' 	=> $data['content'],
+								'component_style' 	=> $obj_comp_style,
+								'component_debug'	=> true
+							])
+						</div>
 					</div>
 				</div>
+				<!-- <a href="#" class="nav-link button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a> -->
+				<!-- <a href="#" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a> -->
 			</div>
 			<div class="tab-pane content-dokumen" id="draft-preview">
 				<div class="panel panel-default page-draft center-block m-t-xl m-b-xl">
@@ -99,6 +121,13 @@
 						@endforeach
 					</div>
 				</div>
+				<!-- <a href="#" class="nav-link button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a> -->
+				<!-- <a href="#" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a> -->
+			</div>
+			<div class="clearfix">&nbsp;</div>
+			<div class="form-group">
+				<a href="#" class="btn btn-primary btn-md pull-left merge-title button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a>
+				<a href="#" class="btn btn-primary btn-md pull-right merge-title button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
 			</div>
 		</div>
 	</div>
@@ -111,7 +140,6 @@
 				'nextSelector': '.button-next', 
 				'previousSelector': '.button-previous',
 				'onTabShow': function (tab, navigation, index) {
-					console.log(tab.context);
 				}
 			});
 
@@ -202,5 +230,14 @@
 		});
 
 		$('.content-dokumen').addClass('bg-grey-light');
+
+
+		$('.input-draft-type').change( function() {
+			title = $('.input-draft-title');
+			typeSelected = $(this).find('option:selected');
+			
+			title.val(typeSelected.text().trim());
+			title.focus();
+		});
 	</script>
 @endpush

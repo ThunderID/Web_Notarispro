@@ -8,7 +8,8 @@
 		<meta name="author" content="">
 		<title>NotarisPRO.com</title>
 		<!-- Custom CSS -->
-		<link href="/css/app.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 		<!-- plugin summernote -->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 		<!-- plugin medium editor for yabwe -->
@@ -28,17 +29,16 @@
 	
 		@include('layouts.partials._navigation')
 
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
-				<div class="col-sm-3 content-left">
+				<div class="col-sm-3 content-left m-b-sm">
 					@yield('left')
 				</div>
-				<div class="col-sm-9 content-right p-l-none p-r-none">
+				<div class="col-sm-9 content-right p-l-none p-r-none m-t-sm">
 					@yield('right')
 				</div>
 			</div>
 		</div>
-
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 		<!-- Custom JS -->
@@ -51,9 +51,7 @@
 		<script src="/plugins/medium-button/dist/medium-button.min.js"></script>
 		
 		<!-- plugin summernote -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
-
-		<script src="/js/app.js" type="text/javascript"></script>
+		<script src="{{ elixir('js/app.js') }}"></script>
 		@stack('scripts')
 	</body>
 </html>
