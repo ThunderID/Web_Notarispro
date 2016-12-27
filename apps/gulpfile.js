@@ -27,5 +27,6 @@ elixir(mix => {
 					'scripts/form/button/submit-to-form.js',
 					], 'public/js/app.js')
 		.copy('resources/assets/plugins/', 'public/plugins/')
+		.copy('resources/assets/images/', 'public/build/images/')
 		.version(['public/css/app.css', 'public/js/app.js']);
 });
