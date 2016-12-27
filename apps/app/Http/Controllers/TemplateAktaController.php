@@ -45,7 +45,7 @@ class TemplateAktaController extends Controller
 	{
 		$param 	= Input::all();
 		$x 	= 0;
-
+dd($param);
 		// replace index paragraph to array
 		// foreach ($param as $k => $v) 
 		// {

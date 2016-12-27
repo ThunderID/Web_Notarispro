@@ -16,9 +16,9 @@
 @push('action')
 	@if (Request::route()->getName() == 'edit.template.akta')
 		<a class="btn btn-link p-t-none p-b-none" href="{{ route('issue.template.akta', ['id' => $info['id']]) }}" role="button">Issue</a>
-		<a class="btn btn-link p-t-none p-b-none btn-form" data-href="{{ route('update.template.akta', ['id' => $info['id']]) }}" data-form="form-template" role="button">Simpan</a>
+		<a class="btn btn-link p-t-none p-b-none btn-form" data-href="{{ route('update.template.akta', ['id' => $info['id']]) }}" data-form="form-template" data-method="put" role="button">Simpan</a>
 	@else
-		<a class="btn btn-link p-t-none p-b-none btn-form" data-href="{{ route('store.template.akta') }}" data-form="form-template" role="button">Simpan</a>
+		<a class="btn btn-link p-t-none p-b-none btn-form" data-href="{{ route('store.template.akta') }}" data-form="form-template" data-method="post" role="button">Simpan</a>
 	@endif
 @endpush
 
