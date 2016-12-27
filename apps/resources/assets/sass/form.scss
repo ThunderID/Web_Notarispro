@@ -7,3 +7,24 @@
 .input {
 	&:focus { @include border-color($color3); }
 }
+.form-filter > label{
+	font-weight: normal;
+	font-size: 15px;
+}
+@media screen and (min-width: 767px) {
+	.form-filter {
+		padding-right: 10px;
+	}
+}
+.form-filter > input, .form-filter > select{
+    background-color: #eaeaea;
+    border-radius: 0 !important;
+    -webkit-border-radius: 0px !important;
+}
+.form-filter > select{
+	appearance: none;
+	-webkit-appearance: none;
+    background-color: #eaeaea !important;
+    border-radius: 0 !important;	
+	background: url(../images/drop.png) no-repeat 97% 50%;
+}
