@@ -8,7 +8,7 @@
 		<meta name="author" content="">
 		<title>Notarispro.com</title>
 		<!-- Custom CSS -->
-		<link href="/css/app.css" rel="stylesheet">
+		<link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 		<!-- plugin summernote -->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 		<!-- plugin medium editor for yabwe -->
@@ -27,7 +27,7 @@
 	<body style="padding-top: 130px">
 		@include('layouts.partials._navigation')
 
-		<div class="container">
+		<div class="container m-t-md">
 			<div class="row">
 				<div class="col-sm-12">
 					@yield('center')
@@ -38,7 +38,6 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 		<!-- Custom JS -->
-		<script href="/js/app.js"></script>
 		<!-- plugin medium editor clone for yabwe -->
 		<script src="/plugins/medium-editor/dist/js/medium-editor.min.js"></script>
 		<!-- plugin rangy extension medium editor clone-->
@@ -49,6 +48,7 @@
 		
 		<!-- plugin summernote -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+		<script src="{{ elixir('js/app.js') }}"></script>
 		@stack('scripts')
 	</body>
 </html>

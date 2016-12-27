@@ -110,12 +110,6 @@
 				"name"  => $element_name,
 				"data" 	=> $c_el_data[$element_name]['element-properties'],
 				"style" => $style])			
-		@elseif($c_el_data[$element_name]['element-type'] == 'select')
-			@include('components.input.module.input-select', [
-				"index" => $key,
-				"name"  => $element_name,
-				"data" 	=> $c_el_data[$element_name]['element-properties'],
-				"style" => $style])			
 		@endif
 	@endif
 @endforeach

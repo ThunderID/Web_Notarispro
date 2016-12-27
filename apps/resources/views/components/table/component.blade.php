@@ -1,5 +1,3 @@
-@include('components.table.module.paginator')
-
 <?php
 	/*
 
@@ -37,8 +35,8 @@
 	$component_errors 	= [];
 
 	if($component_debug == true){
-		if(is_null($c_id) || is_array($c_id)){
-			array_push($component_errors, "Component_id harus di-isi dan bukan dalam format array");
+		if(is_null($c_id) || is_array($c_id) || $c_id == ''){
+			array_push($component_errors, "Component_id is required, can't be empty string, and must not be array");
 		}
 
 
@@ -103,6 +101,18 @@
 		}
 
 		if(count($component_errors) == 0){
+
+			function generatePaginator($count = null, $take = null)
+			{
+				$page 				= 1;
+				if(Request::get('page')){
+					$page 			= Request::get('page'); 
+				}
+
+				$paginator 		= new Illuminate\Pagination\LengthAwarePaginator($count, $count, $take, $page);
+			    return $paginator->setPath(Request::url());
+			}	
+
 			// generatePaginator parameter : data count , take
 			$ui_paging 	= generatePaginator(
 								$component_style['paging']['total_data'],
@@ -110,7 +120,6 @@
 							);
 		}
 	}	
-
 ?>
 
 <!-- components error checking -->

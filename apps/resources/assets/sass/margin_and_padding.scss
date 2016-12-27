@@ -21,9 +21,32 @@ $min_space: 0px;
 .p-none{			padding: $space_none !important;}
 
 // padding xs
+.p-t-xs{			padding-top: $space_xs !important;}
+.p-b-xs{			padding-bottom: $space_xs !important;}
+.p-l-xs{			padding-left: $space_xs !important;}
+.p-r-xs{			padding-right: $space_xs !important;}
+.p-xs{				padding: $space_xs !important;}
+
 // padding sm
+.p-t-sm{			padding-top: $space_sm !important;}
+.p-b-sm{			padding-bottom: $space_sm !important;}
+.p-l-sm{			padding-left: $space_sm !important;}
+.p-r-sm{			padding-right: $space_sm !important;}
+.p-sm{				padding: $space_sm !important;}
+
 // padding md
+.p-t-md{			padding-top: $space_md !important;}
+.p-b-md{			padding-bottom: $space_md !important;}
+.p-l-md{			padding-left: $space_md !important;}
+.p-r-md{			padding-right: $space_md !important;}
+.p-md{				padding: $space_md !important;}
+
 // padding lg
+.p-t-lg{			padding-top: $space_lg !important;}
+.p-b-lg{			padding-bottom: $space_lg !important;}
+.p-l-lg{			padding-left: $space_lg !important;}
+.p-r-lg{			padding-right: $space_lg !important;}
+.p-lg{				padding: $space_lg !important;}
 
 // margin none
 .m-t-none{ 			margin-top: $space_none !important;}

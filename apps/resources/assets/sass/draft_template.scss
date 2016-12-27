@@ -1,25 +1,35 @@
 .page-draft {
 	width: 793px;
 	// height: 29cm;
-	font-family: Monospace !important;
+	font-family: "Courier New", Courier, monospace !important;
 	line-height: 2 !important;
+	font-size: 12px !important;
 	.panel-body {
-		margin-top: 2cm;
-		margin-left: 6cm;
-		margin-right: 1cm;
-		margin-bottom: 3cm;
+		&.margin-standard {
+			margin-top: 2cm;
+			margin-left: 5cm;
+			margin-right: 1cm;
+			margin-bottom: 3cm;
+		}
 		.editable {
 			cursor: text;
 			line-height: 2 !important;
 			&:after {
 				margin-top: 0;
 			}
+			p {
+				margin: 0px !important;
+			}
 		}
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Courier New", Courier, monospace !important;
 	}
 }
 
 .medium-editor {
-	font-family: Monospace !important;
+	font-family: "Courier New", Courier, monospace !important;
+	font-size: 12px !important;
 	height: inherit !important;
 	border: 0px !important;
 	a {
@@ -27,7 +37,7 @@
 		text-decoration: underline;
 	}
 	h1, h2, h3, h4, h5, h6 {
-		font-family: Monospace !important;
+		font-family: "Courier New", Courier, monospace !important;
 	}
 }
 .medium-editor-toolbar ul {

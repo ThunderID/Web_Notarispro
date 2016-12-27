@@ -16,7 +16,7 @@
 
 @section('center')
 	<div class="panel panel-default page-draft center-block">
-		<div class="form panel-body">
+		<div class="form panel-body margin-standard">
 			@foreach ($data['content']['data'] as $k => $v)
 				@foreach ($data['content']['header'] as $k2 => $v2 )
 					{!! (!empty($v[$v2])) ? $v[$v2] : '' !!}

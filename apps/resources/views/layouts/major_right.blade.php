@@ -29,7 +29,7 @@
 	
 		@include('layouts.partials._navigation')
 
-		<div class="container">
+		<div class="container m-t-md">
 			<div class="row">
 				<div class="col-sm-3 content-left m-b-sm">
 					@yield('left')

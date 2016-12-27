@@ -432,10 +432,12 @@ $.fn.bootstrapWizard.defaults = {
 })(jQuery);
 
 var tableSelector = {
+	// get ID table row
 	getID : function (el) {
 		id = el.data('id');
 		return id;
 	},
+	// go to url in table row
 	goUrl : function (el, url) {
 		id = this.getID(el);
 		
@@ -443,9 +445,36 @@ var tableSelector = {
 			window.location = url + '/' + id;
 		}
 	},
+	// cek table row & set click row link
 	init: function(url) {
 		$('.table').find('tbody tr').on('click', function (){
 			tableSelector.goUrl($(this), url);
+		});
+	}
+};
+var submitToForm = {
+	// get url route from button submit
+	getUrl : function (el) {
+		urlAction = el.data('href');
+		return urlAction;
+	},
+	// get name form class from button submit
+	getClassForm : function (el) {
+		classForm = el.data('form');
+		return classForm;
+	},
+	// attr to action form & submit form
+	submitForm : function(url, el) {
+		form = $('.' + el);
+		form.attr('action', url);
+		form.submit();
+	},
+	// init data href & data form class name from button submit event click
+	init: function() {
+		$('.btn-form').on('click', function (){
+			urlInit = submitToForm.getUrl($(this));
+			formInit = submitToForm.getClassForm($(this));
+			submitToForm.submitForm(urlInit, formInit);
 		});
 	}
 };

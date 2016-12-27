@@ -52,17 +52,19 @@
 		<div class="tab-content text-left m-t-sm">
 			<div class="tab-pane" id="draft-periphal">
 				<div class="form">
-					@include('components.input.component', [
-						'component_id' 		=> 'input-draft-type',
-						'component_data' 	=> $data['type'],
-						'component_style' 	=> [
-							'type'		=> [
-								'label'		=> 'jenis template',
-								'class'		=> 'select-template input-draft-type'
-							]
-						],
-						'component_debug'	=> true
-					])
+					@if (Route::is('create.draft.akta'))
+						@include('components.input.component', [
+							'component_id' 		=> 'input-draft-type',
+							'component_data' 	=> $data['type'],
+							'component_style' 	=> [
+								'type'		=> [
+									'label'		=> 'jenis template',
+									'class'		=> 'select-template input-draft-type'
+								]
+							],
+							'component_debug'	=> true
+						])
+					@endif
 
 					@include('components.input.component', [
 						'component_id' 		=> 'input-draft-title',
@@ -115,7 +117,9 @@
 					<div class="form panel-body p-none">
 						@foreach ($data['content']['data'] as $k => $v)
 							@foreach ($data['content']['header'] as $k2 => $v2 )
-								{!! ($k == $v2) ? $data['content']['data'][$v2]['element-properties']['value'] : '' !!}
+
+								{!! ($k == $v2) ? str_replace('@tlab.party.2@', '<input type="text" class="medium medium-editor editable">', $data['content']['data'][$v2]['element-properties']['value']) : '' !!}
+								<!-- {!! ($k == $v2) ? $data['content']['data'][$v2]['element-properties']['value'] : '' !!} -->
 							@endforeach
 							<br/><br/>
 						@endforeach
@@ -129,6 +133,8 @@
 				<a href="#" class="btn btn-primary btn-md pull-left merge-title button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a>
 				<a href="#" class="btn btn-primary btn-md pull-right merge-title button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
 			</div>
+			<div class="clearfix">&nbsp;</div>
+			<div class="clearfix">&nbsp;</div>
 		</div>
 	</div>
 @endsection
