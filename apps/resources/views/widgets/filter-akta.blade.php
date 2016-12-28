@@ -6,7 +6,7 @@
 	</fieldset>
 	<fieldset class="form-group form-filter">
 		<label>Status</label>
-		<input type="" class="form-control" id="exampleInputPassword1" placeholder="">
+		<input type="" class="form-control" id="exampleInputPassword1" placeholder="Pilih Status">
 	</fieldset>
 	<fieldset class="form-group form-filter">
 		<label for="exampleSelect1">Urutkan</label>
