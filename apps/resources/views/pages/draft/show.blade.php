@@ -10,8 +10,8 @@
 @endpush
 
 @push('action')
-		<a class="btn btn-link p-t-none p-b-none" href="{{ route('issue.draft.akta', ['id' => $info['id']]) }}" role="button">Issue</a>
-		<a class="btn btn-link p-t-none p-b-none" href="{{ route('edit.draft.akta', ['id' => $info['id']]) }}" role="button">Edit</a>
+		<a class="btn btn-link p-t-lg p-b-lg" href="{{ route('issue.draft.akta', ['id' => $info['id']]) }}" role="button">Issue</a>
+		<a class="btn btn-link p-t-lg p-b-lg" href="{{ route('edit.draft.akta', ['id' => $info['id']]) }}" role="button">Edit</a>
 @endpush
 
 @section('left')
