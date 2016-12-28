@@ -44,21 +44,33 @@ class TemplateAktaController extends Controller
 	public function store($id = null)
 	{
 		$param 	= Input::all();
-		$x 	= 0;
-dd($param);
+
 		// replace index paragraph to array
-		// foreach ($param as $k => $v) 
-		// {
-		// 	if (strpos($k, 'paragraph') !== false)
-		// 	{
-		// 		$temp_paragraph['paragraph'][$x] = $v;
-		// 		$x = $x + 1;
-		// 	}
-		// 	else 
-		// 	{
-		// 		$temp_paragraph[$k] = $v;
-		// 	}
-		// }
+		foreach ($param as $k => $v) 
+		{
+			if ($k == 'paragraph')
+			{
+				$pattern = "/^<h4.*?>(.*?)<\/h4>|<p.*?>(.*?)<\/p>|<li.*?>(.*?)<\/li>/i";
+				preg_match_all($pattern, $v[0], $out, PREG_PATTERN_ORDER);
+				// $out = $this->multiexplode(['</h4>', '</p>', '</li>'], $v[0]);
+
+				foreach ($out[0] as $k2 => $v2) 
+				{
+					$i = 1;
+					if (strpos($v2, '<li>') !== false) {
+						$temp_k = $k2;
+						$i = $i + 1;
+
+					}
+				}
+
+				$temp_paragraph[$k] = $out[0];
+			}
+			else 
+			{
+				$temp_paragraph[$k] = $v;
+			}
+		}
 
 		// set temp paragraph to variable param
 		// $param = $temp_paragraph;
@@ -69,6 +81,14 @@ dd($param);
 
 		return Redirect::route('show.template.akta', $id);
 	}
+
+	// function multiexplode ($delimiters, $string) {
+
+	//     $ready = str_replace($delimiters, $delimiters[0], $string);
+	//     $launch = explode($delimiters[0], $ready);
+	//     dd($ready);
+	//     return  $launch;
+	// }
 
 	public function show($id)
 	{

@@ -114,7 +114,7 @@
 			</div>
 			<div class="tab-pane content-dokumen" id="draft-preview">
 				<div class="panel panel-default page-draft center-block m-t-xl m-b-xl">
-					<div class="form panel-body p-none">
+					<div class="form panel-body p-none draft-template">
 						@foreach ($data['content']['data'] as $k => $v)
 							@foreach ($data['content']['header'] as $k2 => $v2 )
 
@@ -237,7 +237,6 @@
 
 		$('.content-dokumen').addClass('bg-grey-light');
 
-
 		$('.input-draft-type').change( function() {
 			title = $('.input-draft-title');
 			typeSelected = $(this).find('option:selected');
@@ -245,5 +244,22 @@
 			title.val(typeSelected.text().trim());
 			title.focus();
 		});
+
+		function getTemplate(param) {
+			toUrl = '{{ route("ndex.template.akta") }}';
+			$.ajax({
+			   	url: toUrl,
+			   	type:'GET',
+			   	success: function(data){
+			    	$('#contentData').html($(data).find('#contentData').html());
+			    	$('#filters').html($(data).find('#filters').html());
+			    	$('#filter-contents').html($(data).find('#filter-contents').html());
+					$("#contentData").show(400);
+					$("#filters").show(400);
+					$("#filter-contents").show(400);
+					tmpData = data;
+			   	}
+			});	
+		}
 	</script>
 @endpush
