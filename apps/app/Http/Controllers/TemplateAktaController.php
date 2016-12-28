@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Response;
 
 class TemplateAktaController extends Controller
 {
@@ -135,5 +136,17 @@ class TemplateAktaController extends Controller
 		$data 		= $this->data;
 
 		return Redirect::route('index.template.akta');
+	}
+
+	public function get_template()
+	{
+		$id = Input::get('id');
+		$this->curl_get('lihat/isi/template/akta', $this->token, ['id' => $id]);
+		
+		$status			= $this->status;
+		$data 			= $this->data;
+		$info 			= $this->info;
+
+		return Response::json(['template' => $data], 200);
 	}
 }

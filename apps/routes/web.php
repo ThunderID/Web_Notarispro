@@ -39,5 +39,8 @@ Route::resource('/template/akta',  'TemplateAktaController',
                     ]
     ]
 );
+// route get template id from ajax
+Route::any('/get/template/ajax/', 'TemplateAktaController@get_template')->name('get.template');
+
 Route::post('/template/akta/{id}/issue',   'TemplateAktaController@index')->name('issue.template.akta');
 

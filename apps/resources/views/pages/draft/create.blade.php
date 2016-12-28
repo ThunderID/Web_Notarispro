@@ -82,30 +82,7 @@
 				<div class="m-t-md">
 					<div class="panel panel-default page-draft center-block">
 						<div class="form panel-body p-none">
-							<?php
-								$obj_comp_style = null;
-
-								foreach ($data['content']['data'] as $key => $value) {
-									if (array_first($data['content']['data']) == $value){
-										$obj_comp_style[$key]	= [
-																		'label' => '',
-																		'class'	=> 'medium-editor editable p-none'
-																	];
-									}else{
-										$obj_comp_style[$key]	 =  [
-																		'label' => '',
-																		'class'	=> 'medium-editor editable m-t-m-xl p-none'
-																];
-									}
-								}	
-							?>
-
-							@include('components.input.component', [
-								'component_id' 		=> 'input-draft-content',
-								'component_data' 	=> $data['content'],
-								'component_style' 	=> $obj_comp_style,
-								'component_debug'	=> true
-							])
+							silahkan pilih template terlebih dahulu
 						</div>
 					</div>
 				</div>
@@ -114,15 +91,8 @@
 			</div>
 			<div class="tab-pane content-dokumen" id="draft-preview">
 				<div class="panel panel-default page-draft center-block m-t-xl m-b-xl">
-					<div class="form panel-body p-none draft-template">
-						@foreach ($data['content']['data'] as $k => $v)
-							@foreach ($data['content']['header'] as $k2 => $v2 )
-
-								{!! ($k == $v2) ? str_replace('@tlab.party.2@', '<input type="text" class="medium medium-editor editable">', $data['content']['data'][$v2]['element-properties']['value']) : '' !!}
-								<!-- {!! ($k == $v2) ? $data['content']['data'][$v2]['element-properties']['value'] : '' !!} -->
-							@endforeach
-							<br/><br/>
-						@endforeach
+					<div class="form panel-body margin-standard p-none draft-template">
+						silahkan pilih template terlebih dahulu
 					</div>
 				</div>
 				<!-- <a href="#" class="nav-link button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a> -->
@@ -243,21 +213,25 @@
 			
 			title.val(typeSelected.text().trim());
 			title.focus();
+			// to function get template
+			getTemplate(typeSelected.val());
 		});
 
+		/**
+		 * function get template
+		 * get template from ajax
+		 */
 		function getTemplate(param) {
-			toUrl = '{{ route("ndex.template.akta") }}';
+			// get url
+			console.log(param);
+			toUrl = '{{ route("get.template") }}';
 			$.ajax({
 			   	url: toUrl,
 			   	type:'GET',
+			   	data: {id: param},
 			   	success: function(data){
-			    	$('#contentData').html($(data).find('#contentData').html());
-			    	$('#filters').html($(data).find('#filters').html());
-			    	$('#filter-contents').html($(data).find('#filter-contents').html());
-					$("#contentData").show(400);
-					$("#filters").show(400);
-					$("#filter-contents").show(400);
-					tmpData = data;
+					tmpData = data.template.content.data[0].paragraph_0;
+					$('.draft-template').html(tmpData);
 			   	}
 			});	
 		}
