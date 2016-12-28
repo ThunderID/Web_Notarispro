@@ -9,7 +9,7 @@
 @endpush
 
 @push('action')
-	<a class="btn btn-link p-t-none p-b-none" href="{{ route('create.draft.akta') }}">MULAI DRAFTING</a>
+	<a class="btn btn-link p-t-lg p-b-lg" href="{{ route('create.draft.akta') }}">MULAI DRAFTING</a>
 @endpush
 
 @section('left')
@@ -22,7 +22,7 @@
 			'component_id'		=> 'table-akta',
 		    'component_data' 	=> $data,
 		    'component_style'	=> [
-		        'class' 	=> 'table-hover table-akta', 
+		        'class' 	=> 'table-hover table-akta table-index', 
 		        'noDataMsg' => 'Belum ada akta, silahkan tambah akta',
 		        'paging'    =>  [
 		            'total_data' => $info['total_data'],

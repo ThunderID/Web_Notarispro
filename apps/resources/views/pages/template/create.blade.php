@@ -102,10 +102,10 @@
 			},
 			extensions: {
 				'addInput': new MediumButton({
-					label: '[[[input]]]', 
+					label: '%%input', 
 					action: function (html, mark, parent) {
 						temp = html;
-						return html.replace(temp, temp + ' [[[input]]] ');
+						return html.replace(temp, temp + ' %%input ');
 					}
 				}),
 				'uppercase': new MediumButton({

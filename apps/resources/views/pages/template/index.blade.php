@@ -9,7 +9,7 @@
 @endpush
 
 @push('action')
-	<a class="btn btn-link p-t-none p-b-none" href="{{ route('create.template.akta') }}" role="button">Template Baru</a>
+	<a class="btn btn-link p-t-lg p-b-lg" href="{{ route('create.template.akta') }}" role="button">Template Baru</a>
 @endpush
 
 @section('left')
