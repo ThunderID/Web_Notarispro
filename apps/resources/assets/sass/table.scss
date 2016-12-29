@@ -2,7 +2,8 @@
 	thead {
 		tr {
 			th {
-				color: lighten($color4, 50%) !important;
+				color: $color1 !important;
+				text-transform: capitalize;
 			}
 		}
 	}

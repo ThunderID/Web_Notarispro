@@ -208,33 +208,13 @@
 
 		$('.content-dokumen').addClass('bg-grey-light');
 
+
 		$('.input-draft-type').change( function() {
 			title = $('.input-draft-title');
 			typeSelected = $(this).find('option:selected');
 			
 			title.val(typeSelected.text().trim());
 			title.focus();
-			// to function get template
-			getTemplate(typeSelected.val());
 		});
-
-		/**
-		 * function get template
-		 * get template from ajax
-		 */
-		function getTemplate(param) {
-			// get url
-			console.log(param);
-			toUrl = '{{ route("get.template") }}';
-			$.ajax({
-			   	url: toUrl,
-			   	type:'GET',
-			   	data: {id: param},
-			   	success: function(data){
-					tmpData = data.template.content.data[0].paragraph_0;
-					$('.draft-template').html(tmpData);
-			   	}
-			});	
-		}
 	</script>
 @endpush
