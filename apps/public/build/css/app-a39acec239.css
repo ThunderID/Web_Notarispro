@@ -8515,7 +8515,8 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 }
 
 .table thead tr th {
-  color: gray !important;
+  color: #3983ce !important;
+  text-transform: capitalize;
 }
 
 .table tbody tr {
@@ -8539,6 +8540,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 .page-draft .panel-body .editable {
   cursor: text;
   line-height: 2 !important;
+  padding: 0 !important;
 }
 
 .page-draft .panel-body .editable:after {

@@ -21,7 +21,6 @@
 				@foreach ($data['content']['header'] as $k2 => $v2 )
 					{!! (!empty($v[$v2])) ? $v[$v2] : '' !!}
 				@endforeach
-				<br/><br/>
 			@endforeach
 		</div>
 	</div>

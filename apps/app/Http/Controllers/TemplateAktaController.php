@@ -53,10 +53,10 @@ class TemplateAktaController extends Controller
 			if (strpos($k, 'paragraph') !== false)
 			{
 				// check pattern with tag html h4, p, ol & li
-				$pattern = "/^<h4.*?>(.*?)<\/h4>|<p.*?>(.*?)<\/p>|(<(ol|ul).*?><li>(.*?)<\/li>)|(<li>(.*?)<\/li><\/(ol|ul)>)/i";
+				$pattern = "/<h4.*?>(.*?)<\/h4>|<p.*?>(.*?)<\/p>|(<(ol|ul).*?><li>(.*?)<\/li>)|(<li>(.*?)<\/li><\/(ol|ul)>)/i";
 				preg_match_all($pattern, $v[0], $out, PREG_PATTERN_ORDER);
 
-				// change key index with paragraph[*]
+				// change key index like 'paragraph[*]'
 				foreach ($out[0] as $k2 => $v2) 
 				{
 					$temp_paragraph[$k.'['. $k2 .']'] = $v2;
@@ -96,9 +96,35 @@ class TemplateAktaController extends Controller
 
 		$this->curl_get('edit/isi/template/akta', $this->token, $param);
 		
-		$status		= $this->status;
-		$data 		= $this->data;
-		$info 		= $this->info;
+		$status			= $this->status;
+		$data 			= $this->data;
+		$info 			= $this->info;
+
+		$temp_paragraph = '';
+
+		// merged paragraph per array to 1 paragraph array value
+		foreach ($data['content']['data'] as $k => $v) 
+		{
+			$temp_paragraph 		= $temp_paragraph . $v['element-properties']['value'];
+		}
+
+		// rechange data 'header' to paragraph[0] (1 paragraph)
+		$temp_header[]				= 'paragraph[0]';
+		// reachange data 'data' to merged paragraph
+		$temp_data['paragraph[0]'] 	= [
+										'element-class'	=> 'input',
+										'element-type'	=> 'text',
+										'element-properties'	=> [
+																	'value'			=> $temp_paragraph,
+																	'validation'	=>	[
+																						'required'	=> true
+																					]
+																]
+									];
+
+		// in array from API data 'data' & 'header' replace with temp_header & temp_data
+		$data['content']['header']	= $temp_header;
+		$data['content']['data'] 	= $temp_data;
 
 		return view('pages.template.create', compact('data', 'info'));
 	}
