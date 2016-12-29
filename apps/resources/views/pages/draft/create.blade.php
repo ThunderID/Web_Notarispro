@@ -39,10 +39,10 @@
 					<a href="#draft-periphal" class="nav-link" data-toggle="tab">Langkah 1</a>
 				</li>
 				<li class="nav-item">
-					<a href="#draft-dokumen" class="nav-link" data-toggle="tab">Langkah 2</a>
+					<a href="#draft-preview" class="nav-link" data-toggle="tab">Langkah 2</a>
 				</li>
 				<li class="nav-item">
-					<a href="#draft-preview" class="nav-link" data-toggle="tab">Langkah 3</a>
+					<a href="#draft-dokumen" class="nav-link" data-toggle="tab">Langkah 3</a>
 				</li>
 				<li class="nav-item m-l-xl">
 					<a href="#draft-dokumen" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
@@ -78,19 +78,8 @@
 					])
 				</div>
 			</div>
-			<div class="tab-pane content-dokumen" id="draft-dokumen">
-				<div class="m-t-md">
-					<div class="panel panel-default page-draft center-block">
-						<div class="form panel-body p-none">
-							silahkan pilih template terlebih dahulu
-						</div>
-					</div>
-				</div>
-				<!-- <a href="#" class="nav-link button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a> -->
-				<!-- <a href="#" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a> -->
-			</div>
 			<div class="tab-pane content-dokumen" id="draft-preview">
-				<div class="panel panel-default page-draft center-block m-t-xl m-b-xl">
+				<div class="panel panel-default page-draft center-block">
 					<div class="form panel-body margin-standard p-none draft-template">
 						silahkan pilih template terlebih dahulu
 					</div>
@@ -98,6 +87,18 @@
 				<!-- <a href="#" class="nav-link button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a> -->
 				<!-- <a href="#" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a> -->
 			</div>
+			<div class="tab-pane content-dokumen" id="draft-dokumen">
+				<div class="m-t-md">
+					<div class="panel panel-default page-draft center-block">
+						<div class="form panel-body margin-standard p-none">
+							silahkan pilih template terlebih dahulu
+						</div>
+					</div>
+				</div>
+				<!-- <a href="#" class="nav-link button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a> -->
+				<!-- <a href="#" class="nav-link button-next">Berikutnya &nbsp;&nbsp; <i class="fa fa-angle-right"></i></a> -->
+			</div>
+			
 			<div class="clearfix">&nbsp;</div>
 			<div class="form-group">
 				<a href="#" class="btn btn-primary btn-md pull-left merge-title button-previous"><i class="fa fa-angle-left"></i> &nbsp;&nbsp; Sebelumnya</a>

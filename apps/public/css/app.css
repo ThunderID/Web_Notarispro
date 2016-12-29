@@ -8553,6 +8553,10 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
   font-family: "Courier New", Courier, monospace !important;
 }
 
+.page-draft p, .page-draft ol, .page-draft ul {
+  margin: 0px !important;
+}
+
 .medium-editor {
   font-family: "Courier New", Courier, monospace !important;
   font-size: 12px !important;

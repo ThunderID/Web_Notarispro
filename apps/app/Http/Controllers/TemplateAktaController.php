@@ -44,29 +44,25 @@ class TemplateAktaController extends Controller
 
 	public function store($id = null)
 	{
-		$param 	= Input::all();
+		$param 	= empty($id) ? Input::all() : array_merge(['id' => $id], Input::all());
 
 		// replace index paragraph to array
 		foreach ($param as $k => $v) 
 		{
-			if ($k == 'paragraph')
+			// check key index like 'paragraph'
+			if (strpos($k, 'paragraph') !== false)
 			{
-				$pattern = "/^<h4.*?>(.*?)<\/h4>|<p.*?>(.*?)<\/p>|<li.*?>(.*?)<\/li>/i";
+				// check pattern with tag html h4, p, ol & li
+				$pattern = "/^<h4.*?>(.*?)<\/h4>|<p.*?>(.*?)<\/p>|(<(ol|ul).*?><li>(.*?)<\/li>)|(<li>(.*?)<\/li><\/(ol|ul)>)/i";
 				preg_match_all($pattern, $v[0], $out, PREG_PATTERN_ORDER);
-				// $out = $this->multiexplode(['</h4>', '</p>', '</li>'], $v[0]);
 
+				// change key index with paragraph[*]
 				foreach ($out[0] as $k2 => $v2) 
 				{
-					$i = 1;
-					if (strpos($v2, '<li>') !== false) {
-						$temp_k = $k2;
-						$i = $i + 1;
-
-					}
+					$temp_paragraph[$k.'['. $k2 .']'] = $v2;
 				}
-
-				$temp_paragraph[$k] = $out[0];
 			}
+			// array key index none 'paragraph'
 			else 
 			{
 				$temp_paragraph[$k] = $v;
@@ -74,7 +70,7 @@ class TemplateAktaController extends Controller
 		}
 
 		// set temp paragraph to variable param
-		// $param = $temp_paragraph;
+		$param = $temp_paragraph;
 
 		$this->curl_post('simpan/template/akta', $this->token, $param);
 		
@@ -82,14 +78,6 @@ class TemplateAktaController extends Controller
 
 		return Redirect::route('show.template.akta', $id);
 	}
-
-	// function multiexplode ($delimiters, $string) {
-
-	//     $ready = str_replace($delimiters, $delimiters[0], $string);
-	//     $launch = explode($delimiters[0], $ready);
-	//     dd($ready);
-	//     return  $launch;
-	// }
 
 	public function show($id)
 	{
@@ -141,6 +129,7 @@ class TemplateAktaController extends Controller
 	public function get_template()
 	{
 		$id = Input::get('id');
+
 		$this->curl_get('lihat/isi/template/akta', $this->token, ['id' => $id]);
 		
 		$status			= $this->status;

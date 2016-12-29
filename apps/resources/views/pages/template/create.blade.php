@@ -98,8 +98,13 @@
 			},
 			buttonLabels: 'fontawesome',
 			paste: {
-				cleanPastedHTML: true
+				cleanPastedHTML: true,
+				forcePlainText: true,
 			},
+			spellcheck: false,
+			disableExtraSpaces: true,
+			disableDoubleReturn: true,
+			targetBlank: true,
 			extensions: {
 				'addInput': new MediumButton({
 					label: '[[[input]]]', 
