@@ -31,7 +31,7 @@
 				'component_data' 	=> $data['title'],
 				'component_style' 	=> [
 					'title'		=> [
-						'class'		=> 'input-draft-title'
+						'class'		=> 'input-draft-title input-data'
 					]
 				],
 				'component_debug'	=> true
@@ -44,7 +44,7 @@
 				<label for="">Isi Dokumen</label>
 			</div>
 		</div>
-		<div class="page-panel p-sm">
+		<div class="page-panel bg-grey-light p-sm">
 			<div class="panel panel-default page-draft center-block">
 				<div class="form panel-body margin-standard">
 					<?php
@@ -56,7 +56,7 @@
 								if (array_first($data['content']['data']) == $value){
 									$obj_comp_style[$key]	= [
 																	'label' => '',
-																	'class'	=> 'medium-editor editable m-t-sm'
+																	'class'	=> 'medium-editor editable m-t-sm input-data'
 																];
 								}else{
 									$obj_comp_style[$key]	 =  [
@@ -78,60 +78,22 @@
 			</div>
 		</div>
 	{!! Form::close() !!}
+
+	<!-- Button trigger modal -->
+	{{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal">
+		Launch demo modal
+	</button> --}}
+
+	@include('widgets.modal')
 @endsection
 
 @push('scripts')
 	<script>
-		var editor = new MediumEditor('.medium-editor', {
-			toolbar: {
-				buttons: ['bold', 'italic', 'underline', 'justifyLeft', 'justifyCenter', 'justifyRight', 'orderedlist', 'unorderedlist', 'addInput',
-					{
-						name: 'h4',
-						contentFA: '<i class="fa fa-header"></i>',
-					},
-					'uppercase'
-				]
-			},
-			placeholder: {
-				text: 'Tulis disini...',
-				hideOnClick: true
-			},
-			buttonLabels: 'fontawesome',
-			paste: {
-				cleanPastedHTML: true,
-				forcePlainText: true,
-			},
-			spellcheck: false,
-			disableExtraSpaces: true,
-			disableDoubleReturn: true,
-			targetBlank: true,
-			extensions: {
-				'addInput': new MediumButton({
-					label: '[[[input]]]', 
-					action: function (html, mark, parent) {
-						temp = html;
-						return html.replace(temp, temp + ' [[[input]]] ');
-					}
-				}),
-				'uppercase': new MediumButton({
-					label: 'uppercase', 
-					action: function (html, mark, parent) {
-						temp = html;
-						return html.replace(temp, '<span class="text-uppercase">' + temp + '</span>');
-					}
-				}),
-			}
-		});
-
-		var triggerAutoSave = function (event, editable) {
-			// event auto save
-		};
-
-		var throttledAutoSave = MediumEditor.util.throttle(triggerAutoSave, 1000);
-		editor.subscribe('editableInput', throttledAutoSave);
-
-		$('.page-panel').addClass('bg-grey-light');
-
+		urlAutoSave = "{{ route('automatic.store.template') }}";
+		formAutoSave = $('.form-template');
+		loading.init();
+		mediumEditor.init(urlAutoSave, formAutoSave);
 		submitToForm.init();
+
 	</script>
 @endpush

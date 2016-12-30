@@ -143,4 +143,18 @@ class DraftAktaController extends Controller
 
 		return Redirect::route('index.draft.akta');
 	}
+
+	public function automatic_store($id = null)
+	{
+		$param 	= Input::all();
+		
+		$this->curl_post('simpan/draft/akta', $this->token, $param);
+		
+		$status 	= $this->status;
+
+		if ($status == 'success')
+		{
+			return Response::json(['status' => $status], 200);
+		}
+	}
 }

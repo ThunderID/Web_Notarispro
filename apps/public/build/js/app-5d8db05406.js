@@ -431,6 +431,8 @@ $.fn.bootstrapWizard.defaults = {
 
 })(jQuery);
 
+"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var _createClass=function(){function e(e,t){for(var o=0;o<t.length;o++){var n=t[o];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}();!function(){var e=function(e,t){var o=function(){function e(){_classCallCheck(this,e),this.opts={className:"app-loading",loadingBar:".loading-bar",color:null}}return _createClass(e,[{key:"start",value:function(e){return this.showBar(e),this}},{key:"stop",value:function(){return this.hideBar(),this}},{key:"showBar",value:function(e){var o=this.getBar();this.opts.color&&(o.style.backgroundColor=this.opts.color),e&&(o.style.backgroundColor=e),t.querySelector("body").classList.add(this.opts.className)}},{key:"hideBar",value:function(){t.querySelector("body").classList.remove(this.opts.className),this.getBar().style.backgroundColor=null}},{key:"getBar",value:function(){var e=t.querySelector(this.opts.loadingBar);return e||(e=this.initBar()),e}},{key:"initBar",value:function(){var e=t.createElement("div");return e.className=this.opts.loadingBar.substring(1),t.body.appendChild(e),e}},{key:"setColor",value:function(e){return this.opts.color=e,this.getBar().style.backgroundColor=e,this}}]),e}();return new o};!function(e,t,o){"undefined"!=typeof module?module.exports=o:"undefined"!=typeof e&&(e[t]=o)}(window,"appLoading",e(window,document))}();
+//# sourceMappingURL=app-loading.min.js.map
 var tableSelector = {
 	// get ID table row
 	getID : function (el) {
@@ -483,6 +485,188 @@ var submitToForm = {
 			methodInit = submitToForm.getMethodForm($(this));
 			submitToForm.submitForm(urlInit, formInit, methodInit);
 		});
+	}
+};
+;var autoSave = {
+	init : function (el, url, form) {
+		// event triger auto save medium-editor
+		var triggerAutoSave = function (event, editable) {
+			// call plugin loading 
+			loading.loadingStart();
+			
+			$.ajax({
+				url: url,
+				type:'POST',
+				data: form.serialize(),
+				success: function(data){
+					setTimeout( function (){
+						loading.loadingStop();
+					}, 2000);
+				}
+			});	
+		};
+
+		var throttledAutoSave = MediumEditor.util.throttle(triggerAutoSave, 3000);
+		el.subscribe('editableInput', throttledAutoSave);
+	}
+};
+;var addNewItemToolbar = {
+	// add new button symbol for input modal for draft akta on toolbar
+	addInput : function () {
+		var addInput = new MediumButton({
+			label: '[[[ input ]]]', 
+			action: function (html, mark, parent) {
+				temp = html;
+				return html.replace(temp, temp + ' [[[input]]] ');
+			}
+		});
+		return addInput;
+	},
+	// add new button uppercase on toolbar
+	// addUppercase : function () {
+	// 	var addUppercase = new MediumButton({
+	// 		label: 'uppercase', 
+	// 		action: function (html, mark, parent) {
+	// 			temp = html;
+	// 			return html.replace(temp, '<span class="text-uppercase">' + temp + '</span>');
+	// 		}
+	// 	});
+	// 	return  addUppercase;
+	// },
+	// init : function () {
+		// button addInput & addUppercase add on init
+	// 	addNewButton.addInput();
+	// 	addNewButton.addUppercase();
+	// }
+};
+// rangy.init();
+
+// 			var HighlighterButton = MediumEditor.Extension.extend({
+// 				name: 'highlighter',
+
+// 				init: function() {
+// 					this.classApplier = rangy.createClassApplier('highlight', {
+// 						elementTagName: 'mark',
+// 						normalize: true
+// 					});
+
+// 					this.button = this.document.createElement('button');
+// 					this.button.classList.add('medium-editor-action');
+// 					this.button.innerHTML = '<i class="fa fa-paint-brush"></i>';
+// 					this.button.title = 'Highlight';
+
+// 					this.on(this.button, 'click', this.handleClick.bind(this));
+// 				},
+// 				getButton: function () {
+// 					return this.button;
+// 				},
+// 				handleClick: function (event) {
+// 					this.classApplier.toggleSelection();
+
+// 					// Ensure the editor knows about an html change so watchers are notified
+// 					// ie: <textarea> elements depend on the editableInput event to stay synchronized
+// 					this.base.checkContentChanged();
+// 				}
+// 			});
+
+// 			var addParsingVariable = MediumEditor.Extension.extend({
+// 				name: 'parsingVariable',
+
+// 				init: function() {
+// 					this.button = this.document.createElement('button');
+// 					this.button.classList.add('medium-editor-action');
+// 					this.button.innerHTML = '<i class="fa fa-paint-brush"></i>';
+// 					this.button.title = 'Highlight';
+// 				}
+// 			});
+
+// 			var editor = new MediumEditor('.medium-editor', {
+// 				toolbar: {
+// 					buttons: ['bold', 'italic', 'underline', 'justifyLeft', 'justifyCenter', 'justifyRight', 'orderedlist', 'unorderedlist', 'addInput',
+// 						{
+// 							name: 'h4',
+// 							contentFA: '<i class="fa fa-header"></i>',
+// 						},
+// 						'uppercase'
+// 					]
+// 				},
+// 				placeholder: {
+// 					text: 'Tulis disini...',
+// 					hideOnClick: true
+// 				},
+// 				buttonLabels: 'fontawesome',
+// 				paste: {
+// 					cleanPastedHTML: true
+// 				},
+// 				extensions: {
+// 					'highlighter': new HighlighterButton(),
+// 					'addInput': new MediumButton({
+// 						label: '%input%', 
+// 						action: function (html, mark, parent) {
+// 							temp = html;
+// 							return html.replace(temp, temp + ' %input% ');
+// 						}
+// 					}),
+// 					'uppercase': new MediumButton({
+// 						label: 'uppercase', 
+// 						action: function (html, mark, parent) {
+// 							temp = html;
+// 							return html.replace(temp, '<span class="text-uppercase">' + temp + '</span>');
+// 						}
+// 					}),
+// 				}
+// 			});
+
+// 			var triggerAutoSave = function (event, editable) {
+// 				// event auto save
+// 			};
+
+// 			var throttledAutoSave = MediumEditor.util.throttle(triggerAutoSave, 1000);
+// 			editor.subscribe('editableInput', throttledAutoSave);
+// 		});
+;var mediumEditor = {
+	// call plugin medium editor
+	init : function(url, form) {
+		var editor = new MediumEditor('.medium-editor', {
+			// button on toolbar medium-editor
+			toolbar: {
+				buttons: ['bold', 'italic', 'underline', 'justifyLeft', 'justifyCenter', 'justifyRight', 'orderedlist', 'unorderedlist', 'addInput', {
+						name: 'h4', contentFA: '<i class="fa fa-header"></i>'}]
+			},
+			placeholder: {
+				text: 'Tulis disini...',
+				hideOnClick: true
+			},
+			buttonLabels: 'fontawesome',
+			paste: {
+				cleanPastedHTML: true,
+				forcePlainText: true,
+			},
+			spellcheck: false,
+			disableExtraSpaces: true,
+			disableDoubleReturn: true,
+			targetBlank: true,
+			extensions: {
+				'addInput' : addNewItemToolbar.addInput(),
+				// 'addUppercase' : addNewButton.addUppercase(),
+			}
+		});
+		// call function autosave medium-editor
+		autoSave.init(editor, url, form);
+	}
+};
+;var loading = {
+	changeColor : function (color) {
+		appLoading.setColor(color);
+	},
+	loadingStart : function () {
+		appLoading.start();
+	},
+	loadingStop : function () {
+		appLoading.stop();
+	},
+	init : function () {
+		loading.changeColor('');
 	}
 };
 //# sourceMappingURL=app.js.map

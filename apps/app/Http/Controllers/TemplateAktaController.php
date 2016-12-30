@@ -39,6 +39,9 @@ class TemplateAktaController extends Controller
 		$data 			= $this->data;
 		$info 			= $this->info;
 
+		// remove data 'content' example paragraph
+		$data['content']['data']['paragraph[0]']['element-properties']['value'] = null;
+
 		return view('pages.template.create', compact('data', 'info'));
 	}
 
@@ -68,9 +71,8 @@ class TemplateAktaController extends Controller
 				$temp_paragraph[$k] = $v;
 			}
 		}
-
 		// set temp paragraph to variable param
-		$param = $temp_paragraph;
+		$param 		= $temp_paragraph;
 
 		$this->curl_post('simpan/template/akta', $this->token, $param);
 		
@@ -121,7 +123,6 @@ class TemplateAktaController extends Controller
 																					]
 																]
 									];
-
 		// in array from API data 'data' & 'header' replace with temp_header & temp_data
 		$data['content']['header']	= $temp_header;
 		$data['content']['data'] 	= $temp_data;
@@ -152,6 +153,10 @@ class TemplateAktaController extends Controller
 		return Redirect::route('index.template.akta');
 	}
 
+	/**
+	 * function get template
+	 * for list select on create draft akta
+	 */
 	public function get_template()
 	{
 		$id = Input::get('id');
@@ -163,5 +168,49 @@ class TemplateAktaController extends Controller
 		$info 			= $this->info;
 
 		return Response::json(['template' => $data], 200);
+	}
+
+	/**
+	 * [automatic_store description]
+	 * like function store but
+	 * no redirect page
+	 */
+	public function automatic_store($id = null)
+	{
+		$param 	= empty($id) ? Input::all() : array_merge(['id' => $id], Input::all());
+
+		// replace index paragraph to array
+		foreach ($param as $k => $v) 
+		{
+			// check key index like 'paragraph'
+			if (strpos($k, 'paragraph') !== false)
+			{
+				// check pattern with tag html h4, p, ol & li
+				$pattern = "/<h4.*?>(.*?)<\/h4>|<p.*?>(.*?)<\/p>|(<(ol|ul).*?><li>(.*?)<\/li>)|(<li>(.*?)<\/li><\/(ol|ul)>)/i";
+				preg_match_all($pattern, $v[0], $out, PREG_PATTERN_ORDER);
+
+				// change key index like 'paragraph[*]'
+				foreach ($out[0] as $k2 => $v2) 
+				{
+					$temp_paragraph[$k.'['. $k2 .']'] = $v2;
+				}
+			}
+			// array key index none 'paragraph'
+			else 
+			{
+				$temp_paragraph[$k] = $v;
+			}
+		}
+		// set temp paragraph to variable param
+		$param 		= $temp_paragraph;
+
+		$this->curl_post('simpan/template/akta', $this->token, $param);
+		
+		$status 	= $this->status;
+
+		if ($status == 'success')
+		{
+			return Response::json(['status' => $status], 200);
+		}
 	}
 }

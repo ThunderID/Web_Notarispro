@@ -41,6 +41,10 @@ Route::resource('/template/akta',  'TemplateAktaController',
 );
 // route get template id from ajax
 Route::any('/get/template/ajax/', 'TemplateAktaController@get_template')->name('get.template');
+// route store template automatic with ajax
+Route::any('/store/template',   'TemplateAktaController@automatic_store')->name('automatic.store.template');
+// route store draft akta automatic with ajax
+Route::any('/store/draft/akta',   'DraftAktaController@automatic_store')->name('automatic.store.akta');
 
 Route::post('/template/akta/{id}/issue',   'TemplateAktaController@index')->name('issue.template.akta');
 

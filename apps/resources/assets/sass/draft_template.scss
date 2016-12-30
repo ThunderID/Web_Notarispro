@@ -3,18 +3,18 @@
 	// height: 29cm;
 	font-family: "Courier New", Courier, monospace !important;
 	line-height: 2 !important;
-	font-size: 12px !important;
+	font-size: 12pt !important;
 	.panel-body {
 		&.margin-standard {
 			margin-top: 2cm;
 			margin-left: 5cm;
 			margin-right: 1cm;
 			margin-bottom: 3cm;
+			padding: 0 !important;
 		}
 		.editable {
 			cursor: text;
 			line-height: 2 !important;
-			padding: 0 !important;
 			&:after {
 				margin-top: 0;
 			}
