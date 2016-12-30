@@ -114,11 +114,13 @@
 
 @push('scripts')
 	<script>
+		urlGetTemplate = "{{ route('get.template') }}";
 		urlAutoSave = "{{ route('automatic.store.akta') }}";
 		formAutoSave = $('.form-template');
 		loading.init();
 		mediumEditor.init(urlAutoSave, formAutoSave);
 		submitToForm.init();
+		addEventClick.init($('.draft-template'));
 
 		$(document).ready( function() {
 			$('#wizard').bootstrapWizard({
@@ -127,16 +129,20 @@
 				'onTabShow': function (tab, navigation, index) {
 				}
 			});
-
+		});
 		$('.content-dokumen').addClass('bg-grey-light');
 
 
 		$('.input-draft-type').change( function() {
 			title = $('.input-draft-title');
 			typeSelected = $(this).find('option:selected');
+			textSelected = typeSelected.text().trim();
+			valSelected = typeSelected.val();
 			
-			title.val(typeSelected.text().trim());
+			title.val(textSelected);
 			title.focus();
+
+			ajaxSend.init(urlGetTemplate, 'GET', valSelected);
 		});
 	</script>
 @endpush

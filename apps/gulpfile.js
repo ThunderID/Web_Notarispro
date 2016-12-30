@@ -31,7 +31,8 @@ elixir(mix => {
 					'scripts/form/editor/auto-save.js',
 					'scripts/form/editor/add-new-item-toolbar.js',
 					'scripts/form/editor/medium-editor.js',
-					'scripts/form/add-event-click.js',
+					'scripts/form/editor/add-event-click.js',
+					'scripts/ajax/ajax-send.js',
 					'scripts/animation/loading.js',
 					], 'public/js/app.js')
 		.copy('resources/assets/plugins/', 'public/plugins/')
