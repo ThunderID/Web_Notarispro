@@ -16,8 +16,8 @@ require('laravel-elixir-vue-2');
 elixir(mix => {
 	mix.sass([
 					'app.scss',
-					'../../../node_modules/editor/dist/css/medium-editor.css',
-					'../../../node_modules/editor/dist/css/themes/bootstrap.css',
+					'../../../node_modules/medium-editor/dist/css/medium-editor.css',
+					'../../../node_modules/medium-editor/dist/css/themes/bootstrap.css',
 					'../../../node_modules/selectize/dist/css/selectize.css',
 					'../../../node_modules/selectize/dist/css/selectize.bootstrap3.css',
 					'../../../node_modules/app-loading/app-loading.min.css',
@@ -33,6 +33,7 @@ elixir(mix => {
 					'scripts/form/editor/medium-editor.js',
 					'scripts/form/editor/add-event-click.js',
 					'scripts/ajax/ajax-send.js',
+					'scripts/template/format.js',
 					'scripts/animation/loading.js',
 					], 'public/js/app.js')
 		.copy('resources/assets/plugins/', 'public/plugins/')

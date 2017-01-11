@@ -79,6 +79,30 @@ class DraftAktaController extends Controller
 				]
 			]
 		];
+// 		$data = "CV [[[input]]]
+// Pada hari ini, [[[input]]], tanggal [[[input]]],pukul [[[input]]] WIB ( Waktu Indonesia Bagian Badsfdsfarat) [[[input]]]. Berhadapan dengan saya [[[input]]], Sarjana Hukum, Magister Kenotariatan, Notaris di [[[input]]], Notaris dan akan disebut pada bagian akhir akta ini:
+// [[[input]]]
+// [[[input]]]
+
+// Para penghadap menerangkan dan menyatakan bahwa para penghadap
+// telah setuju dan mufakat untuk mendirikan Perseroan Komanditer dengan anggaran dasar sebagai berikut:
+// Pasal 1
+// Perseroan ini bernama : “ CV [[[input]]]” berkedudukan di [[[input]]],dan dapat mempunyai kantor cabang dan atau Perwakilan di tempat-tempat lain, atas permufakatan para persero.
+// Pasal 2
+// - Maksud dan tujuan Perseroan ini ialah:
+// - Melakukan usaha jasa di bidang konsultasi mengenai system informasi, manajemen, akuntansi dan keuangan serta pekerjaan pekerjaan yang berhubungan dengan jasa computer, teknik serta umum lainnya, kecuali bidang hukum dan pajak, dimana kegiatannya meliputi: [[[input]]] Melayani pembuatan system informasi dan manajemen, serta System administrasi perusahaan dan/atau instasi pemerintah baik pusat maupun daerah, baik secara manual maupun komputerisasi.
+// - Melayani pemasangan implementasi perangkat keras dan perangkat lunak komputer.
+// - Melakukan kegiatan di bidang pendidikan, pelatihan, riset dan menyelenggarakan seminar serta pekerjaan pekerjaan–pekerjaan yang berhubungan dengan kegiatan peningkatan sumber daya manusia lainnya.
+// – Menjalankan usaha perdagangan eksport-import [[[input]]] interinsuler dan local, terutama memperdagangkan komputer dan perihaperal, obat-obatan dan farmasi, alat-alat kedokteran, toilletries, kerajinan tangan (handicraft), garment, makanan dan minuman ringan, barang-barang elektronika, elektrikal, mekanikal, telekomunikasi, alat-alat tulis dan kantor, barang-barang cetakan dan material percetakan, furniture, bahan-bahan bangunan, baik untuk perhitungan sendiri maupun secara komisi atau secara amanat.
+// - bertindak sebagai leveransir, supplier, komisioner, grosser, distributor dan keagenan/perwakilan baik dari perusahaan-perusahaan dalam maupun luar negeri.
+// Menjalankan usaha di bidang percetakan penerbitan buku (publishing), penjilitan dan, pembuatan karton box, pengepakan, dan cartonage (packaging).
+// Menjalankan usaha dibidang industri, antara lain, industri kayu, makan, minim, teksil, kertas, pakaian jadi, furniture, peralatan tulis dan kantor, alat-alat rumah tangga, serta barang-barang kerajinan tangan.
+// Menjalankan usaha-usaha pemborong/kontraktor untuk semua pekerjaan banguna, antara lain gedung-gedung, rumah-rumah (Real Estate), jalanan, jembatan, konstruksi bangunan besi dan kayu, pengairan pekerjaan-pekerjaan penggalian tanah dan pengurangan, instalasi air, listrik gas dan telepon serta semua pekerjaan yang berhubungan dengan itu.
+// Menjalankan usaha di bidang jasa boga dan/atau catering, jasa teknik dan biro jasa umum, antara lain pengurusan pembuatan Surat Ijin Mengemudi (SIM), STNK, cleaning service, pemeliharaan gedung-gedung, dan kantor-kantor beserta peralatannya, perbengkelan, pemeliharaan air conditioning (A.C.), pemeliharaan pompa-pompa air, pemeliharaan listrik dan lain sebagainya yang berhubungan dengan itu kecuali bidang Hukum dan pajak.
+// Menjalankan usaha pengangkutan darat dan menerima serta mengangkut orang dan atau barang dan bertindak sebagai agen dari perusahaan-perusahaan lainnya.
+// Berusaha dalam bidang industri dalam arti kata yang seluasluasnya.
+
+// - dan selanjutnya melakukan segala tindakan dan kegiatan yang berhubungan dengan maksud dan tujuan tersebut, semuanya dalam arti kata yang seluas-luasnya, dengan megindahkan Undang-undang dan Peraturan-peraturan yang berlaku.";
 
 		return view('pages.draft.create', compact('data', 'info'));
 	}

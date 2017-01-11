@@ -17,7 +17,7 @@
 @endsection
 
 @section('right')
-	<div style="margin-top: 30px;">
+	<div class="check" style="margin-top: 30px;">
 		@include('components.table.component', [
 			'component_id'		=> 'table-akta',
 		    'component_data' 	=> $data,

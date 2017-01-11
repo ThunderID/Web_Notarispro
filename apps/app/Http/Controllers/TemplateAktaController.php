@@ -167,7 +167,7 @@ class TemplateAktaController extends Controller
 		$data 			= $this->data;
 		$info 			= $this->info;
 
-		return Response::json(['template' => $data], 200);
+		return Response::json(['data' => $data, 'status' => $status], 200);
 	}
 
 	/**

@@ -29,6 +29,7 @@
 @endsection
 
 @section('right')
+	
 	{!! Form::open(['url' => '#', 'class' => 'form-draft']) !!}
 		<div id="wizard" class="info-wizard text-center">
 			<div class="p-b-sm">
@@ -110,6 +111,12 @@
 			</div>
 		</div>
 	{!! Form::close() !!}
+	
+	{{-- <div class="draft-template">
+		{!! $data !!}
+	</div> --}}
+
+	@include('widgets.modal')
 @endsection
 
 @push('scripts')
@@ -117,10 +124,11 @@
 		urlGetTemplate = "{{ route('get.template') }}";
 		urlAutoSave = "{{ route('automatic.store.akta') }}";
 		formAutoSave = $('.form-template');
+		elementTemplate = $('.draft-template');
 		loading.init();
 		mediumEditor.init(urlAutoSave, formAutoSave);
 		submitToForm.init();
-		addEventClick.init($('.draft-template'));
+		addEventClick.init(elementTemplate);
 
 		$(document).ready( function() {
 			$('#wizard').bootstrapWizard({
@@ -142,7 +150,25 @@
 			title.val(textSelected);
 			title.focus();
 
-			ajaxSend.init(urlGetTemplate, 'GET', valSelected);
+			// paramater ajax
+			paramAjax = { 'id' : valSelected };
+			methodAjax = 'GET';
+
+			// function ajax callback
+			ajaxSend.init(urlGetTemplate, methodAjax, paramAjax, function (data) {
+				if (typeof(data) !== 'undefined') {
+					// initial parsing template with param class template & data
+					templateFormat.init(elementTemplate, data);
+					// replace varible input with link (parameter: div template, variable input for replace, href for link)
+					templateFormat.replaceElementToLink(elementTemplate, /(\[\[\[input\]\]\])/g, '#');
+					// add event open modal for link input (parameter: div template, find search, modal name)
+					templateFormat.addEventModal(elementTemplate, 'a', '.modal');
+				}
+			});
+			// console.log(contentTemplate);
+
 		});
+		templateFormat.replaceElementToLink(elementTemplate, /(\[\[\[input\]\]\])/g, '#');
+		templateFormat.addEventModal(elementTemplate, 'a', '.modal');
 	</script>
 @endpush

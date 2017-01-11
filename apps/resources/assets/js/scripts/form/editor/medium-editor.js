@@ -14,11 +14,10 @@
 			buttonLabels: 'fontawesome',
 			paste: {
 				cleanPastedHTML: true,
-				forcePlainText: true,
+				forcePlainText: false,
 			},
 			spellcheck: false,
 			disableExtraSpaces: true,
-			disableDoubleReturn: true,
 			targetBlank: true,
 			extensions: {
 				'addInput' : addNewItemToolbar.addInput(),
