@@ -1,35 +1,51 @@
-@extends('layouts.centered')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+	<style>
+		body { 
+			font-family: "Courier New", Courier, monospace !important; 
+		}
+		.page-draft {
+			font-family: "Courier New", Courier, monospace !important;
+			line-height: 2 !important;
+			font-size: 12pt !important;
+			text-align: justify;
+		}
 
-@section('nav-template')
-	active
-@endsection
+		.page-draft .panel-body.margin-standard {
+			margin-top: 2cm;
+			margin-left: 5cm;
+			margin-right: 1cm;
+			margin-bottom: 3cm;
+			padding: 0 !important;
+		}
+		.page-draft h1, .page-draft h2, .page-draft h3, .page-draft h4, .page-draft h5, .page-draft h6 {
+			font-family: "Courier New", Courier, monospace !important;
+		}
 
-@push('title')
-	<a class="btn btn-link btn-xs" href="{{ route('index.template.akta') }}"><i class="fa fa-chevron-left"></i></a>
-	{{ $data['title']['data']['title'] }}
-@endpush
-
-@push('action')
-		<a class="btn btn-link p-t-lg p-b-lg" href="{{ route('issue.template.akta', ['id' => $info['id']]) }}" role="button">Issue</a>
-		<a class="btn btn-link p-t-lg p-b-lg" href="{{ route('edit.template.akta', ['id' => $info['id']]) }}" role="button">Edit</a>
-@endpush
-
-@section('center')
+		.page-draft p, .page-draft ol, .page-draft ul {
+			margin: 0px !important;
+		}
+	</style>
+</head>
+<body>
 	<div class="panel panel-default page-draft center-block">
-		<div class="panel-body margin-standard" id="content">
-			{{-- @foreach ($data['content']['data'] as $k => $v)
-				@foreach ($data['content']['header'] as $k2 => $v2 )
-					{!! (!empty($v[$v2])) ? $v[$v2] : '' !!}
-				@endforeach
-			@endforeach --}}
+		<div class="panel-body  margin-standard" id="content">
 			<h4 style="text-align: center;"><strong>PERSEROAN KOMANDITER</strong></h4><h4 style="text-align: center;"><strong>CV. [[[input]]]</strong></h4><h4 style="text-align: center;"><strong>Nomor: [[[input]]]</strong></h4><p name="6f8d">Pada hari ini, [[[input]]], tanggal [[[input]]], pukul [[[input]]], berhadapan dengan saya, [[[input]]], Sarjana Hukum, Magister Kenotarisan, Notaris di [[[input]]], Notaris akan menyebutkan dibagian akhir akta ini:</p><ol><li name="098a">[[[input]]]</li><li name="0fff">[[[input]]]</li></ol><p name="5a7c">- Para penghadap menerangkan dan menyatakan bahwa para penghadap telah setuju dan mufakat untuk mendirikan Perseroan Komanditer dengan anggaran dasar sebagai berikut:</p><p name="84a8" style="text-align: center;"><strong>pasal 1</strong></p><p name="564c">- Perseroan ini bernama: “CV. [[[input]]] berkedudukan di [[[input]]], dan dapat mempunyai kantor cabang dan atau perwakilan ditempat-tempat lain atas permufakatan pada persero.</p><p name="9bf5" style="text-align: center;"><strong>pasal 2</strong></p><p name="34bb">- Maksud dan tujuan Perseroan ini adalah [[[input]]]</p><p name="5e7f">- Melakukan usaha jasa di bidang konsultasi mengenai sistem informasi, manajemen, akuntasi dan keuangan serta pekerjaan-pekerjaan yang berhubungan dengan jasa komputer, teknik serta umum lainnya. kecuali bidang hukum dan pajak, dimana kegiatannya meliputi: [[[input]].</p><p name="a89d">- Melayani pembuatan sistem informasi dan manajemen, serta sistem administrasi perusahan dan/atau instansi pemerintah baik pusat maupun daerah, baik secara manual maupun komputerisasi.</p><p name="681e">- melayani pemasangan implementasi perangkat keras dan perangkat lunak komputer.</p><p name="c096">- melakukan kegiatan dibidang pendidikan, pelatihan, riset dan menyelenggarakan seminar serta pekerjaan, pekerjaan-pekerjaan yang berhubungan dengan kegiatan peningkatan sumber daya manusia lainnya.</p><p name="effb">- Menjalankan usaha perdagangan eksport-import, interinsuler dan local, terutama memperdagangkan komputer dan peripheral, obat-obatan dan farmasi, alat-alat kedokteran, toilletries, kerajingan tangan (handicraft), garment, makanan dan minuman ringan, barang-barang elektronika, elektrikal, mekanikal,- telekomunikasi, alat-alat tulis dan kantor, barang-barang cetakan dan material percetakan, furniture, bahan-bahan bangunan, baik untuk perhitungan sendiri maupun secara komisi atau secara amanat.</p><p name="520d">- bertindak sebagai leveransir, supplier, komisioner, grosser, distributor dan keagenan/perwakilan baik dari perusahaan-perusahaan dalam maupun luar negeri.</p><p name="c150">Menjalankan usaha di bidang percetakan penerbitan buku (publishing), penjilitan dan, pembuatan karton box, pengepakan, dan cartonage (packaging)</p><p name="8126">Menjalankan usaha dibidang industri, antara lain, industri kayu, makan, minim, teksil, kertas, pakaian jadi, furniture, peralatan tulis dan kantor, alat-alat rumah tangga, serta barang-barang kerajinan tangan.</p><p name="e43d">Menjalankan usaha-usaha pemborong/kontraktor untuk semua pekerjaan banguna, antara lain gedung-gedung, rumah-rumah (Real Estate), jalanan, jembatan, konstruksi bangunan besi dan kayu, pengairan pekerjaan-pekerjaan penggalian tanah dan pengurangan, instalasi air, listrik gas dan telepon serta semua pekerjaan yang berhubungan dengan itu.</p><p name="c14c">Menjalankan usaha di bidang jasa boga dan/atau catering, jasa teknik dan biro jasa umum, antara lain pengurusan pembuatan Surat Ijin Mengemudi (SIM), STNK, cleaning service, pemeliharaan gedung-gedung, dan kantor-kantor beserta peralatannya, perbengkelan, pemeliharaan air conditioning (A.C.), pemeliharaan pompa-pompa air, pemeliharaan listrik dan lain sebagainya yang berhubungan dengan itu kecuali bidang Hukum dan pajak.</p><p name="44be">Menjalankan usaha pengangkutan darat dan menerima serta mengangkut orang dan atau barang dan bertindak sebagai agen dari perusahaan-perusahaan lainnya.</p><p name="af9e">Berusaha dalam bidang industri dalam arti kata yang seluasluasnya.</p><p name="cc0f">- dan selanjutnya melakukan segala tindakan dan kegiatan yang berhubungan dengan maksud dan tujuan tersebut, semuanya dalam arti kata yang seluas-luasnya, dengan megindahkan Undang-undang dan Peraturan-peraturan yang berlaku.</p><p name="a9fa" style="text-align: center;"><strong>pasal 3</strong></p><p name="e925">- Perseroan ini dimulai pada hari dan tanggal akta ini, dan didirikan untuk Waktu yang tidak ditentukan lamanya.</p><p name="c79f">- Masing-masing persero sewaktu-waktu berhak untuk mengundurkan diri dari perseroan, asal saja persero yang bersangkutan memberikan maksudnya itu kepada pesero lainnya dua bulan sebelumnya.</p><p name="6831">- Dalam hal demikian, maka bagian dari pesero yang mengundurkan diri itu dalam perseroan dikeluarkan dan di bayarkan secra tunai kepadanya dalam 3 (tiga) bulan, terhitung dari dan menurut keadaan pada hari dan tanggal ke luarnya/pengunduran diri pesero tersebut, sedang untuk selanjutnya perseroan diteruskan oleh para pesero lainnya.</p><p name="24e6"><strong>pasal 4</strong></p><p name="2d19">- Modal dasar perseroan ini tidak ditentukan besarnya, dan sewaktu-waktu akan ternyata dan dapat dilihat dalam buku perseroan; demikian juga bagian dari masing-masing pesero dalam modal perseroan.</p><p name="53d4">- Tiap-tiap penyetoran dalam modal oleh para pesero dilakukan atas persetujuan mereka bersama dan dimasukkan sebagai kredit dalam bukubuku perseroan, dan kepada pesero yang berkenaan diberikan suatu tanda pembayaran yang sah dan ditanda-tangani oleh semua pesero.</p><p name="6306">- Selain modal, pesero [[[input]]] tersebut juga memberikan tenaga, kecakapan dan keahlian serta Waktunya kepada perseroan.</p><p name="6483"><strong>pasal 5</strong></p><p name="80b9">Pesero [[[input]]] tersebut adalah persero pengurus yang bertanggung-jawab penuh dengan gelaran DIREKTUR. Pesero [[[input]]] adalah persero komanditer yang bertanggung-jawab hanya sampai jumlah pemasukan modalnya dalam perseroan.</p><p name="ba3f"><strong>pasal 6</strong></p><p name="cd21">- Direktur mewakili perseroan di dalam dan di luar Pengadilan, dan karenanya berhak menanda-tangani untuk atas nama perseroan, mengikat perseroan terhadap pihak lain, atau pihak lain pada persero, serta menjalankan semua hak dan kekuasaan, baik mengenai tindakan pengurusan maupun mengenai tidakan pemilikan, akan tetapi dengan pembatasan bahwa untuk:</p><p name="df0f">meminjam atau meminjamkan uang atas nama perseroan (dalam hal ini tidak termasuk pengambilan uang dari kredit yang telah dibuka).</p><p name="923b">menjual atau melepaskan hak atas barang-barang milik perseroan.</p><p name="e8ba">membeli asset perseroan yang nilainya lebih dari Rp.25.000.000,&#8202;—&#8202;(dua puluh lima juta rupiah).</p><p name="5c94">mengikat perseroan sebagai penanggung/avalist.</p><p name="fa11">haruslah mendapat persetujuan tertulis terlebih dahulu dari dan atau bertindak bersama-sam dengan persero komanditer.</p><p name="3938">Persero Komanditer atau kuasanya yang sah berhak, asal saja pada waktu dan dari kerja untuk memeriksa buku-buku dan barang-barang perseroan serta memasuki tempat yang dimiliki dan dikuasai oleh perseroan, dan persero pengurus berkewajiban untuk memberi keterangan tentang segala sesuatu yang ditanyakan oleh persero komanditer.</p><p name="3120">- Pesero pengurus berhak pula mengangkat seorang atau lebih kuasa, dengan memberikan kepadanya kekuasaan-kekuasaan yang dianggapnya perlu; demikian pula mencabut kekuasaan-kekuasaan yang dianggapnya perlu; demikian pula mencabut kekuasaan-kekuasaan tersebut.</p><p name="b703"><strong>pasal 7</strong></p><p name="d556">- Pesero pengurus mendapat gaji dan jaminan-jaminan lainnya yang jumlahnya ditetapkan oleh para pesero bersama. Gaji dan jaminan-jaminan lainya tersebut akan dimasukkan dalam bukubuku perseroan sebagai pengeluaran/biaya perseroan.</p><p name="8fec"><strong>pasal 8</strong></p><p name="ce0e">- Buku-buku perseroan ditutup pada akhir bulan Desember tiap-tiap tahun; untuk pertama kalinya pada tanggal [[[input]]] Selambat-lambatnya pada akhir bulan Maret tahun berikutnya, untuk pertama kalinya selambat-lambatnya pada akhir bulan Maret dua ribu delapan (2008), para pesero Pengurus harus membuat neraca perhitungan laba rugi, dan untuk sahnya harus ditanda-tangani oleh semua pesero.</p><p name="6846">- Pembagian keuntungan harus segera dilakukan setelah neraca dan perhitungan laba-rugi tersebut disahkan, sedangkan jika terdapat kerugian, maka kerugian tersebut segera ditutup dengan cara mengurangi atau menambah modal perseroan.</p>
 		</div>
 	</div>
-@endsection
-
-@push('scripts')
-	{!! paragraphdotline::include_js() !!}
-	<script>
-		$('body').addClass('bg-grey-light');
-	</script>
-@endpush
+</body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+{!! paragraphdotline::include_js() !!}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.margin-standard').append('halo');
+	});
+</script>
+</html>

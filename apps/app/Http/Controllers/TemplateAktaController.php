@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Response;
+use lockedPDF;
 
 class TemplateAktaController extends Controller
 {
@@ -89,7 +90,12 @@ class TemplateAktaController extends Controller
 		$data 			= $this->data;
 		$info 			= $this->info;
 
+		// return view('pdf.template_pdf');
 		return view('pages.template.show', compact('data', 'info'));
+		// $pdf = lockedPDF::intialPDF();
+		// $pdf2 = lockedPDF::setLoadHTML($pdf);
+		// $pdf3 = lockedPDF::setLockedPDF($pdf, '', 'coba');
+		// return $pdf3->stream('coba');
 	}
 
 	public function edit($id)

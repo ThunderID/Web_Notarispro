@@ -179,6 +179,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         // Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+
+        ThunderID\ParagraphDotLine\ParagraphDotLineServiceProvider::class,
+        ThunderID\LockedPDF\ServiceProvider::class,
 
     ],
 
@@ -230,6 +234,10 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        'paragraphdotline' => ThunderID\ParagraphDotLine\ParagraphDotLineBuilder::class,
+        'lockedPDF' => ThunderID\LockedPDF\Facade::class,
 
     ],
 

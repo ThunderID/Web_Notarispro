@@ -1,0 +1,18 @@
+{
+	"name": "thunderid/paragraph-dot-line",
+	"description": "paragraph dot line for javascript",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Team UI",
+			"email": "team.ui@thunderlab.id"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"ThunderID\\ParagraphDotLine\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"require": {}
+}
