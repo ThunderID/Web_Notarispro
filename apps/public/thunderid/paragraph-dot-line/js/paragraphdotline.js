@@ -72,7 +72,21 @@
 					this.isBold = false;
 					tmpHelper += "</b>"; 
 					value = value.replace("</b>", "");
-				}				
+				}		
+
+				elementBold = value.indexOf('<strong>');
+				if(elementBold !== -1){
+					this.isBold = true;
+					tmpHtmlResult += "<strong>"; 
+					value = value.replace("<strong>", "");
+				}
+
+				elementBold = value.indexOf('</strong>');
+				if(elementBold !== -1){
+					this.isBold = false;
+					tmpHelper += "</strong>"; 
+					value = value.replace("</strong>", "");
+				}							
 
 				// underline
 				elementUnderline = value.indexOf('<u>');
@@ -159,9 +173,9 @@
 			if(type == 'center'){
 				buffer = insertStringFromLeftRight(tmpHtmlResult, result.length , max);
 				if((buffer.length * 2) + result.length < max){
-					tmpHtmlResult = buffer + ' ' + tmpHtmlResult + buffer;		
+					tmpHtmlResult = buffer + ' ' + tmpHtmlResult + buffer;	
 				}else{
-					tmpHtmlResult = buffer + tmpHtmlResult + buffer;		
+					tmpHtmlResult = buffer + tmpHtmlResult + buffer;
 				}
 			}else{
 				buffer = insertStringFromRight(tmpHtmlResult, result.length , max);
@@ -178,7 +192,7 @@
 		}
 
 		function insertStringFromRight(input, ctr, max){
-			buffer = ""
+			buffer = "";
 
 			if(ctr < max){
 				if(ctr > 0){
@@ -191,6 +205,9 @@
 			}
 
 			//check html flag
+			if(this.isBold == true){
+				buffer = "</strong>" + buffer + "<strong>";
+			}
 			if(this.isBold == true){
 				buffer = "</b>" + buffer + "<b>";
 			}
@@ -205,7 +222,7 @@
 		}
 
 		function insertStringFromLeftRight(input, ctr, max){
-			buffer = ""
+			buffer = "";
 
 			if(ctr < max){
 				if(ctr > 0){
@@ -213,11 +230,14 @@
 						buffer = buffer + '-';
 						ctr = ctr + 2;
 					}
-					while (ctr < max);
+					while (ctr < max - 1);
 				}
 			}
 
-			//check html flag
+			//check hntml flag
+			if(this.isBold == true){
+				buffer = "</strong>" + buffer + "<strong>";
+			}			
 			if(this.isBold == true){
 				buffer = "</b>" + buffer + "<b>";
 			}
